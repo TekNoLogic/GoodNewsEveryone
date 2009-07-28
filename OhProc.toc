@@ -1,0 +1,16 @@
+## Interface: 30100
+
+## Title: OhProc
+## Notes: Template for creating new addons
+## Author: Tekkub Stoutwrithe
+## Version: Alpha
+## X-Website: http://tekkub.net/
+## X-Email: tekkub-wow@googlegroups.com
+## X-Category: Misc
+
+## SavedVariables: OhProcDB
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+
+OhProc.lua
