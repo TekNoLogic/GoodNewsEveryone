@@ -4,7 +4,7 @@
 ----------------------
 
 local L = setmetatable({}, {__index=function(t,i) return i end})
-local defaults, db = {point = "CENTER", x = 0, y = 300}
+local defaults, db = {point = "CENTER", x = 0, y = 300, reacttime = 6}
 
 local spells = {
 	-- Death Knight
@@ -136,6 +136,7 @@ function anchor:ADDON_LOADED(event, addon)
 	spells = t
 
 	self:RegisterEvent("UNIT_AURA")
+	self:RegisterEvent("COMBAT_TEXT_UPDATE")
 
 	self:UnregisterEvent("ADDON_LOADED")
 	self.ADDON_LOADED = nil
@@ -160,4 +161,13 @@ function anchor:UNIT_AURA(event, unit)
 			f:Show()
 		elseif active[spellname] then active[spellname]:Hide() end
 	end
+end
+
+function anchor:COMBAT_TEXT_UPDATE(event, action, name, ...)
+	if action ~= "SPELL_ACTIVE" then return end
+
+	local f = active[name] or GetFrame()
+	local _, _, icon = GetSpellInfo(name)
+	f.msg, f.spell, f.stacks, f.duration, f.expires = "|T"..icon..":0|t "..name, name, 1, db.reacttime, GetTime() + db.reacttime
+	f:Show()
 end
