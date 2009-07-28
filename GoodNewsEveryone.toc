@@ -1,16 +1,16 @@
 ## Interface: 30100
 
-## Title: OhProc
-## Notes: Template for creating new addons
+## Title: GoodNewsEveryone
+## Notes: I've invented a device that tells you when reactive abilities are available!
 ## Author: Tekkub Stoutwrithe
 ## Version: Alpha
 ## X-Website: http://tekkub.net/
 ## X-Email: tekkub-wow@googlegroups.com
 ## X-Category: Misc
 
-## SavedVariables: OhProcDB
+## SavedVariables: GoodNewsEveryoneDB
 
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed
 
-OhProc.lua
+GoodNewsEveryone.lua

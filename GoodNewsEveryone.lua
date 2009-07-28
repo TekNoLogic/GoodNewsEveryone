@@ -57,7 +57,7 @@ local anchor = CreateFrame("Frame", nil, UIParent)
 
 local text = anchor:CreateFontString(nil, nil, "GameFontNormalSmall")
 text:SetPoint("CENTER")
-text:SetText("ProcPop")
+text:SetText("GoodNewsEveryone")
 
 anchor:SetWidth(text:GetStringWidth() + 8)
 anchor:SetHeight(24)
@@ -124,10 +124,10 @@ anchor:RegisterEvent("ADDON_LOADED")
 
 
 function anchor:ADDON_LOADED(event, addon)
-	if addon:lower() ~= "ohproc" then return end
+	if addon:lower() ~= "goodnewseveryone" then return end
 
-	OhProcDB = setmetatable(OhProcDB or {}, {__index = defaults})
-	db = OhProcDB
+	GoodNewsEveryoneDB = setmetatable(GoodNewsEveryoneDB or {}, {__index = defaults})
+	db = GoodNewsEveryoneDB
 
 	anchor:SetPoint(db.point, db.x, db.y)
 
