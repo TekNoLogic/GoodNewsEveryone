@@ -44,8 +44,8 @@ InterfaceOptions_AddCategory(frame)
 ----------------------------
 --      LDB Launcher      --
 ----------------------------
---[[
+
 local ldb = LibStub:GetLibrary("LibDataBroker-1.1")
-local dataobj = ldb:GetDataObjectByName("CorkLauncher") or ldb:NewDataObject("CorkLauncher", {type = "launcher", icon = "Interface\\Icons\\INV_Drink_11", tocname = "Cork"})
+local dataobj = ldb:GetDataObjectByName("CorkLauncher") or ldb:NewDataObject("GoodNewsEveryone", {type = "launcher", icon = "Interface\\AddOns\\GoodNewsEveryone\\icon"})
 dataobj.OnClick = function() InterfaceOptionsFrame_OpenToCategory(frame) end
-]]
+
