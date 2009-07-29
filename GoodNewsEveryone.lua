@@ -39,6 +39,19 @@ local spells = {
 	44445, -- Hot Streak
 	44543, -- Finger of Frost
 	44546, -- Brain Freeze
+
+	-- Warlock
+	34935, -- Backlash
+	63156, -- Decimation
+	47195, -- Eradication
+	47245, -- Molten Core
+	18094, -- Nightfall
+
+	-- Warrior
+	46913, -- Bloodsurge
+	29801, -- Rampage
+	29723, -- Sudden Death
+	56636, -- Taste for Blood
 }
 
 local colors = setmetatable({}, {__index = function(t,i)
