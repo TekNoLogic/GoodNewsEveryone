@@ -25,7 +25,6 @@ frame:SetScript("OnShow", function()
 		if GoodNewsEveryoneDB.showanchor then anchor:Show() else anchor:Hide() end
 	end)
 
-
 	local resetanchor = LibStub("tekKonfig-Button").new_small(frame, "LEFT", showanchor, "RIGHT", 105, 0)
 	resetanchor:SetWidth(60) resetanchor:SetHeight(18)
 	resetanchor.tiptext = "Click to reset the anchor to it's default position."
@@ -35,17 +34,6 @@ frame:SetScript("OnShow", function()
 		anchor:ClearAllPoints()
 		anchor:SetPoint(GoodNewsEveryoneDB.point, GoodNewsEveryoneDB.x, GoodNewsEveryoneDB.y)
 	end)
-
-
-	local reacttime, reacttimetext, rtcontainer = LibStub("tekKonfig-Slider").new(frame, "Reactive timeout: " .. GoodNewsEveryoneDB.reacttime.. "s", 0, 15, "TOPLEFT", showanchor, "BOTTOMLEFT", GAP, -GAP)
-	reacttime.tiptext = "The number of seconds to show 'reactive' abilities."
-	reacttime:SetValueStep(1)
-	reacttime:SetValue(GoodNewsEveryoneDB.reacttime)
-	reacttime:SetScript("OnValueChanged", function(self, newvalue)
-		GoodNewsEveryoneDB.reacttime = newvalue
-		reacttimetext:SetText("Reactive spell time: " .. newvalue.. "s")
-	end)
-
 
 	frame:SetScript("OnShow", nil)
 end)

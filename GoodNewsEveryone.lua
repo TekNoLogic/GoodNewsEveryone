@@ -4,7 +4,7 @@
 ----------------------
 
 local L = setmetatable({}, {__index=function(t,i) return i end})
-local defaults, db = {point = "CENTER", x = 0, y = 300, reacttime = 6, showanchor = true}
+local defaults, db = {point = "CENTER", x = 0, y = 300, showanchor = true}
 
 local spells = {
 	-- Death Knight
@@ -72,7 +72,7 @@ local text = anchor:CreateFontString(nil, nil, "GameFontNormalSmall")
 text:SetPoint("CENTER")
 text:SetText("Good News Everyone!")
 
-anchor:SetWidth(text:GetStringWidth() + 8)
+anchor:SetWidth(text:GetStringWidth() + 16)
 anchor:SetHeight(24)
 
 anchor:SetBackdrop({bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", edgeSize = 16, insets = {left = 5, right = 5, top = 5, bottom = 5}, tile = true, tileSize = 16})
@@ -92,10 +92,15 @@ local function OnShow(self) active[self.spell] = self end
 local function OnHide(self) active[self.spell] = nil end
 local function OnUpdate(self, elap)
 	local now = GetTime()
-	if now >= self.expires then return self:Hide() end
+	if self.expires and now >= self.expires then return self:Hide() end
+	if not self.expires and not IsUsableSpell(self.spell) then return self:Hide() end
 
-	local left = math.ceil(self.expires - now)
-	self.text:SetText(self.msg.. (self.stacks > 1 and (" x"..self.stacks) or "").. " ("..colors[left / self.duration]..left.."|rs)")
+	if self.expires then
+		local left = math.ceil(self.expires - now)
+		self.text:SetText(self.msg.. (self.stacks > 1 and (" x"..self.stacks) or "").. " ("..colors[left / self.duration]..left.."|rs)")
+	else
+		self.text:SetText(self.msg.. (self.stacks > 1 and (" x"..self.stacks) or ""))
+	end
 end
 
 
@@ -183,7 +188,7 @@ function anchor:COMBAT_TEXT_UPDATE(event, action, name, ...)
 
 	local f = active[name] or GetFrame()
 	local _, _, icon = GetSpellInfo(name)
-	f.msg, f.spell, f.stacks, f.duration, f.expires = "|T"..icon..":0|t "..name, name, 1, db.reacttime, GetTime() + db.reacttime
+	f.msg, f.spell, f.stacks, f.duration, f.expires = "|T"..icon..":0|t "..name, name, 1
 	f:Show()
 end
 
