@@ -48,10 +48,8 @@ local spells = {
 	18094, -- Nightfall
 
 	-- Warrior
-	46913, -- Bloodsurge
-	29801, -- Rampage
+	46916, -- Bloodsurge (buff named "Slam!")
 	29723, -- Sudden Death
-	56636, -- Taste for Blood
 }
 
 local colors = setmetatable({}, {__index = function(t,i)
