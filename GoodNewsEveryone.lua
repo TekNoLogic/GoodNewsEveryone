@@ -37,15 +37,17 @@ local spells = {
 	44404, -- Missle Barrage
 	11103, -- Impact
 	44445, -- Hot Streak
-	44543, -- Finger of Frost
-	44546, -- Brain Freeze
+	44442, -- Firestarter
+	44543, -- Fingers of Frost
+	57761, -- Brain Freeze (buff named "Fireball!")
 
 	-- Warlock
+	47258, -- Backdraft
 	34935, -- Backlash
 	63156, -- Decimation
 	47195, -- Eradication
 	47245, -- Molten Core
-	18094, -- Nightfall
+	17941, -- Nightfall (buff name "Shadow Trance")
 
 	-- Warrior
 	46916, -- Bloodsurge (buff named "Slam!")
