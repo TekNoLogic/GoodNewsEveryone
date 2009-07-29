@@ -4,7 +4,7 @@
 ----------------------
 
 local L = setmetatable({}, {__index=function(t,i) return i end})
-local defaults, db = {point = "CENTER", x = 0, y = 300, reacttime = 6}
+local defaults, db = {point = "CENTER", x = 0, y = 300, reacttime = 6, showanchor = true}
 
 local spells = {
 	-- Death Knight
@@ -53,11 +53,11 @@ end})
 --      Anchor      --
 ----------------------
 
-local anchor = CreateFrame("Frame", nil, UIParent)
+local anchor = CreateFrame("Button", nil, UIParent)
 
 local text = anchor:CreateFontString(nil, nil, "GameFontNormalSmall")
 text:SetPoint("CENTER")
-text:SetText("GoodNewsEveryone")
+text:SetText("Good News Everyone!")
 
 anchor:SetWidth(text:GetStringWidth() + 8)
 anchor:SetHeight(24)
@@ -66,10 +66,10 @@ anchor:SetBackdrop({bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", edgeF
 anchor:SetBackdropColor(0.09, 0.09, 0.19, 0.5)
 anchor:SetBackdropBorderColor(0.5, 0.5, 0.5, 1)
 
-anchor:EnableMouse(true)
 anchor:SetMovable(true)
-anchor:SetScript("OnMouseDown", anchor.StartMoving)
-anchor:SetScript("OnMouseUp", function(self, button)
+anchor:RegisterForDrag("LeftButton")
+anchor:SetScript("OnDragStart", anchor.StartMoving)
+anchor:SetScript("OnDragStop", function(self, button)
 	self:StopMovingOrSizing()
 	db.point, db.x, db.y = "BOTTOMLEFT", self:GetLeft(), self:GetBottom()
 end)
@@ -82,8 +82,7 @@ local function OnUpdate(self, elap)
 	if now >= self.expires then return self:Hide() end
 
 	local left = math.ceil(self.expires - now)
-	local message = self.msg.. (self.stacks > 1 and (" x"..self.stacks) or "").. ((left and left >= 0) and " ("..colors[left / self.duration]..left.."|rs)" or "")
-	self.text:SetText(message)
+	self.text:SetText(self.msg.. (self.stacks > 1 and (" x"..self.stacks) or "").. " ("..colors[left / self.duration]..left.."|rs)")
 end
 
 
@@ -129,7 +128,10 @@ function anchor:ADDON_LOADED(event, addon)
 	GoodNewsEveryoneDB = setmetatable(GoodNewsEveryoneDB or {}, {__index = defaults})
 	db = GoodNewsEveryoneDB
 
+	LibStub("tekKonfig-AboutPanel").new("GoodNewsEveryone", "GoodNewsEveryone")
+
 	anchor:SetPoint(db.point, db.x, db.y)
+	if not db.showanchor then anchor:Hide() end
 
 	local t = {}
 	for k,v in pairs(spells) do t[GetSpellInfo(v)] = true end
@@ -171,3 +173,5 @@ function anchor:COMBAT_TEXT_UPDATE(event, action, name, ...)
 	f.msg, f.spell, f.stacks, f.duration, f.expires = "|T"..icon..":0|t "..name, name, 1, db.reacttime, GetTime() + db.reacttime
 	f:Show()
 end
+
+GOODNEWS_ANCHOR = anchor

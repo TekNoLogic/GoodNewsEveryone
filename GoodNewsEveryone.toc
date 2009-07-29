@@ -13,4 +13,7 @@
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed
 
+tekKonfig\tekKonfig.xml
+
 GoodNewsEveryone.lua
+Config.lua
