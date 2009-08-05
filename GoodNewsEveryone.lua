@@ -96,7 +96,7 @@ local function OnUpdate(self, elap)
 	if not self.expires and not IsUsableSpell(self.spell) then return self:Hide() end
 
 	if self.expires then
-		local left = math.ceil(self.expires - now)
+		local left = math.floor(self.expires - now)
 		self.text:SetText(self.msg.. (self.stacks > 1 and (" x"..self.stacks) or "").. " ("..colors[left / self.duration]..left.."|rs)")
 	else
 		self.text:SetText(self.msg.. (self.stacks > 1 and (" x"..self.stacks) or ""))
