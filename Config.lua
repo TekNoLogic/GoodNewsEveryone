@@ -9,13 +9,13 @@ anchor:SetScript("OnClick", function(self) InterfaceOptionsFrame_OpenToCategory(
 frame.name = "GoodNewsEveryone"
 frame:Hide()
 
-frame:SetScript("OnShow", function()
 	local GAP = 8
+frame:SetScript("OnShow", function(self)
 	local tekcheck = LibStub("tekKonfig-Checkbox")
 
-	local title, subtitle = LibStub("tekKonfig-Heading").new(frame, "Good News Everyone!", "I've created a panel that lets you configure this addon!")
+	local title, subtitle = LibStub("tekKonfig-Heading").new(self, "Good News Everyone!", "I've created a panel that lets you configure this addon!")
 
-	local showanchor = tekcheck.new(frame, nil, "Show anchor", "TOPLEFT", subtitle, "BOTTOMLEFT", -2, -GAP)
+	local showanchor = tekcheck.new(self, nil, "Show anchor", "TOPLEFT", subtitle, "BOTTOMLEFT", -2, -GAP)
 	showanchor.tiptext = "Toggle the text anchor."
 	showanchor:SetChecked(GoodNewsEveryoneDB.showanchor)
 	local checksound = showanchor:GetScript("OnClick")
@@ -25,7 +25,7 @@ frame:SetScript("OnShow", function()
 		if GoodNewsEveryoneDB.showanchor then anchor:Show() else anchor:Hide() end
 	end)
 
-	local resetanchor = LibStub("tekKonfig-Button").new_small(frame, "LEFT", showanchor, "RIGHT", 105, 0)
+	local resetanchor = LibStub("tekKonfig-Button").new_small(self, "LEFT", showanchor, "RIGHT", 105, 0)
 	resetanchor:SetWidth(60) resetanchor:SetHeight(18)
 	resetanchor.tiptext = "Click to reset the anchor to it's default position."
 	resetanchor:SetText("Reset")
@@ -35,7 +35,7 @@ frame:SetScript("OnShow", function()
 		anchor:SetPoint(GoodNewsEveryoneDB.point, GoodNewsEveryoneDB.x, GoodNewsEveryoneDB.y)
 	end)
 
-	frame:SetScript("OnShow", nil)
+	self:SetScript("OnShow", nil)
 end)
 
 InterfaceOptions_AddCategory(frame)
