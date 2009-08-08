@@ -9,8 +9,8 @@ anchor:SetScript("OnClick", function(self) InterfaceOptionsFrame_OpenToCategory(
 frame.name = "GoodNewsEveryone"
 frame:Hide()
 
-	local GAP = 8
 frame:SetScript("OnShow", function(self)
+	local GAP, EDGEGAP = 8, 16
 	local tekcheck = LibStub("tekKonfig-Checkbox")
 
 	local title, subtitle = LibStub("tekKonfig-Heading").new(self, "Good News Everyone!", "I've created a panel that lets you configure this addon!")
@@ -34,6 +34,49 @@ frame:SetScript("OnShow", function(self)
 		anchor:ClearAllPoints()
 		anchor:SetPoint(GoodNewsEveryoneDB.point, GoodNewsEveryoneDB.x, GoodNewsEveryoneDB.y)
 	end)
+
+
+	local group = LibStub("tekKonfig-Group").new(self, "Font")
+	group:SetPoint("TOP", showanchor, "BOTTOM", 0, -16)
+	group:SetPoint("LEFT", 16, 0)
+	group:SetPoint("RIGHT", -16, 0)
+
+
+	local anchor, rows, height = group, {}, 0
+	local function OnClick(self)
+		GoodNewsEveryoneDB.font = self.font
+		for _,row in pairs(rows) do row:SetChecked(row == self) end
+	end
+	for i,name in ipairs{"GameFontNormal", "GameFontNormalLarge", "GameFontNormalHuge", "CombatTextFont", "BossEmoteNormalHuge"} do
+		local row = CreateFrame("CheckButton", nil, group)
+		row:SetPoint("TOP", anchor, i == 1 and "TOP" or "BOTTOM", 0, i == 1 and -GAP or 0)
+		row:SetPoint("LEFT", GAP, 0)
+		row:SetPoint("RIGHT", -GAP, 0)
+
+		row:SetChecked(name == GoodNewsEveryoneDB.font)
+		row:SetScript("OnClick", OnClick)
+
+		local highlight = row:CreateTexture()
+		highlight:SetTexture("Interface\\HelpFrame\\HelpFrameButton-Highlight")
+		highlight:SetTexCoord(0, 1, 0, 0.578125)
+		highlight:SetAllPoints()
+		row:SetHighlightTexture(highlight)
+		row:SetCheckedTexture(highlight)
+
+		local text = row:CreateFontString(nil, nil, name)
+		text:SetPoint("LEFT", row)
+		text:SetPoint("RIGHT", row)
+		text:SetText(name)
+
+		row:SetHeight(text:GetStringHeight() + GAP)
+		height = height + text:GetStringHeight() + GAP
+
+		table.insert(rows, row)
+		anchor = row
+		row.font = name
+	end
+
+	group:SetHeight(height + GAP*2)
 
 	self:SetScript("OnShow", nil)
 end)

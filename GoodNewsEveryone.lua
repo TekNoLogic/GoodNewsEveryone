@@ -4,7 +4,7 @@
 ----------------------
 
 local L = setmetatable({}, {__index=function(t,i) return i end})
-local defaults, db = {point = "CENTER", x = 0, y = 300, showanchor = true}
+local defaults, db = {point = "CENTER", x = 0, y = 300, showanchor = true, font = "GameFontNormalLarge"}
 
 local spells = {
 	-- Death Knight
@@ -114,15 +114,13 @@ local function GetFrame()
 	local f = CreateFrame("Frame", nil, UIParent)
 	f:SetFrameStrata("HIGH")
 	f:SetPoint("TOP", lastframe, "BOTTOM")
-	f:SetHeight(20)
 	f:SetWidth(250)
 	f:Hide()
 	f:SetScript("OnShow", OnShow)
 	f:SetScript("OnHide", OnHide)
 	f:SetScript("OnUpdate", OnUpdate)
 
-	f.text = f:CreateFontString(nil, "OVERLAY")
-	f.text:SetFontObject("GameFontNormalLarge")
+	f.text = f:CreateFontString()
 	f.text:SetPoint("CENTER")
 	f.text:SetJustifyH("CENTER")
 
@@ -177,6 +175,9 @@ function anchor:UNIT_AURA(event, unit)
 		local name, _, icon, count, _, duration, expires = UnitAura("player", spellname)
 		if name then
 			local f = active[spellname] or GetFrame()
+			f.text:SetFontObject(db.font)
+			f.text:SetText(" ")
+			f:SetHeight(f.text:GetStringHeight())
 			f.msg, f.spell, f.stacks, f.duration, f.expires = "|T"..icon..":0|t "..spellname, spellname, count, duration, expires
 			f:Show()
 		elseif active[spellname] then active[spellname]:Hide() end
