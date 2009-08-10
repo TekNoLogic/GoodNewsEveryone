@@ -1,0 +1,19 @@
+GoodNewsEveryone! is a "reactive ability" alert addon.  If will display proc buffs the player should know about for decision making, and abilities that are only available under certain conditions.  GNE! is inspired by OhSnap's design and MSBT's triggers.
+
+h2. Supported class buffs
+
+* Death Knight: Freezing Fog, Killing Machine
+* Priest: Surge of Light, Serendipity, Essence of Life
+* Paladin: Light's Grace, Infusion of Light, The Art of War
+* Shaman: Tidal waves, Maelstrom Weapon, Clearcasting
+* Druid: Omen of Clarity, Eclipse
+* Hunter: Lock and Load
+* Mage: Missle Barrage, Impact, Hot Streak, Firestarter, Fingers of Frost, Brain Freeze
+* Warlock: Backdraft, Backlash, Decimation, Eradication, Molten Core, Nightfall
+* Warrior: Bloodsurge, Sudden Death
+
+h2. Links
+
+<b>Visit "my site":http://tekkub.net/ for more great addons<br>
+Please report all bugs and feature requests to my "Github tracker":http://github.com/tekkub/GoodNewsEveryone/issues<br>
+Please direct all feedback and questions to my "Google Groups":http://groups-beta.google.com/group/tekkub-wow mailinglist.</b>
