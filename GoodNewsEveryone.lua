@@ -88,7 +88,12 @@ anchor:SetScript("OnDragStop", function(self, button)
 end)
 
 local active, frames, lastframe = {}, {}, anchor
-local function OnShow(self) active[self.spell] = self end
+local function OnShow(self)
+	active[self.spell] = self
+	self.text:SetFontObject(db.font)
+	self.text:SetText(" ")
+	self:SetHeight(self.text:GetStringHeight())
+end
 local function OnHide(self) active[self.spell] = nil end
 local function OnUpdate(self, elap)
 	local now = GetTime()
@@ -120,7 +125,7 @@ local function GetFrame()
 	f:SetScript("OnHide", OnHide)
 	f:SetScript("OnUpdate", OnUpdate)
 
-	f.text = f:CreateFontString()
+	f.text = f:CreateFontString(nil, nil, db.font)
 	f.text:SetPoint("CENTER")
 	f.text:SetJustifyH("CENTER")
 
@@ -175,9 +180,6 @@ function anchor:UNIT_AURA(event, unit)
 		local name, _, icon, count, _, duration, expires = UnitAura("player", spellname)
 		if name then
 			local f = active[spellname] or GetFrame()
-			f.text:SetFontObject(db.font)
-			f.text:SetText(" ")
-			f:SetHeight(f.text:GetStringHeight())
 			f.msg, f.spell, f.stacks, f.duration, f.expires = "|T"..icon..":0|t "..spellname, spellname, count, duration, expires
 			f:Show()
 		elseif active[spellname] then active[spellname]:Hide() end
