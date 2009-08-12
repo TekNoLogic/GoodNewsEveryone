@@ -88,8 +88,12 @@ anchor:SetScript("OnDragStop", function(self, button)
 end)
 
 local active, frames, lastframe = {}, {}, anchor
+local PULSESCALE, SCALETIME, SHRINKTIME = 1.5, 0.05, 0.2
 local function OnShow(self)
+	local now = GetTime()
 	active[self.spell] = self
+	self:SetScale(1)
+	self.scaletime, self.shrinktime = now + SCALETIME, now + SCALETIME + SHRINKTIME
 	self.text:SetFontObject(db.font)
 	self.text:SetText(" ")
 	self:SetHeight(self.text:GetStringHeight())
@@ -99,6 +103,9 @@ local function OnUpdate(self, elap)
 	local now = GetTime()
 	if self.expires and now >= self.expires then return self:Hide() end
 	if not self.expires and not IsUsableSpell(self.spell) then return self:Hide() end
+
+	local scale = (now <= self.scaletime) and (PULSESCALE - (PULSESCALE-1)*(self.scaletime - now)/SCALETIME) or (now <= self.shrinktime) and (1 + (PULSESCALE-1)*(self.shrinktime - now)/SHRINKTIME) or 1
+	self:SetScale(scale)
 
 	if self.expires then
 		local left = math.floor(self.expires - now)
