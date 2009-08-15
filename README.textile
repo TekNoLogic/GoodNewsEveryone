@@ -6,14 +6,14 @@ Please note that "reactive" abilities like "Kill Shot":http://www.wowhead.com/?s
 
 If you think I've missed an ability for your class and have confirmed that it is not supported as a reactive ability, please open an issue on "Github":http://github.com/tekkub/GoodNewsEveryone/issues
 
-* Death Knight: Freezing Fog, Killing Machine
+* Death Knight: Freezing Fog (Rime), Killing Machine
 * Priest: Surge of Light, Serendipity, Essence of Life
 * Paladin: Light's Grace, Infusion of Light, The Art of War
-* Shaman: Tidal waves, Maelstrom Weapon, Clearcasting
+* Shaman: Tidal waves, Maelstrom Weapon, Elemental Focus (Clearcasting)
 * Druid: Omen of Clarity, Eclipse
 * Hunter: Lock and Load
 * Mage: Missle Barrage, Impact, Hot Streak, Firestarter, Fingers of Frost, Brain Freeze
-* Warlock: Backdraft, Backlash, Decimation, Eradication, Molten Core, Nightfall
+* Warlock: Backdraft, Backlash, Decimation, Eradication, Molten Core, Nightfall (Shadow Trance)
 * Warrior: Bloodsurge, Sudden Death
 
 h2. Links
