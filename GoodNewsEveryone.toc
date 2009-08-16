@@ -3,7 +3,7 @@
 ## Title: GoodNewsEveryone
 ## Notes: I've invented a device that tells you when reactive abilities are available!
 ## Author: Tekkub Stoutwrithe
-## Version: Alpha
+## Version: 3.2.0.1
 ## X-Website: http://tekkub.net/
 ## X-Email: tekkub-wow@googlegroups.com
 ## X-Category: Misc
