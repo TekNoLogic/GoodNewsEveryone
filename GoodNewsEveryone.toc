@@ -1,4 +1,4 @@
-## Interface: 30100
+## Interface: 30200
 
 ## Title: GoodNewsEveryone
 ## Notes: I've invented a device that tells you when reactive abilities are available!
