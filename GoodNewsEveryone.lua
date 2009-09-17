@@ -54,6 +54,13 @@ local spells = {
 	29723, -- Sudden Death
 }
 
+local eclipse_wrath, _, ewicon = GetSpellInfo(48517)
+local eclipse_sf, _, esficon = GetSpellInfo(48518)
+local custom_names = {
+	[eclipse_wrath..ewicon] = eclipse_wrath.. " (".. GetSpellInfo(5176).. ")",
+	[eclipse_sf..esficon] = eclipse_sf.. " (".. GetSpellInfo(2912).. ")",
+}
+
 local colors = setmetatable({}, {__index = function(t,i)
 	local r,g,b = i > 0.5 and 2 * (1 - i) or 1, i > 0.5 and 1 or 2 * i, 0
 	local color = string.format("|cff%02x%02x%02x", r*255, g*255, b*255)
@@ -187,7 +194,7 @@ function anchor:UNIT_AURA(event, unit)
 		local name, _, icon, count, _, duration, expires = UnitAura("player", spellname)
 		if name then
 			local f = active[spellname] or GetFrame()
-			f.msg, f.spell, f.stacks, f.duration, f.expires = "|T"..icon..":0|t "..spellname, spellname, count, duration, expires
+			f.msg, f.spell, f.stacks, f.duration, f.expires = "|T"..icon..":0|t ".. (custom_names[spellname..icon] or spellname), spellname, count, duration, expires
 			f:Show()
 		elseif active[spellname] then active[spellname]:Hide() end
 	end
