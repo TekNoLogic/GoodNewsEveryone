@@ -36,8 +36,18 @@ frame:SetScript("OnShow", function(self)
 	end)
 
 
+	local playsound = tekcheck.new(self, nil, "Play sound", "TOPLEFT", showanchor, "BOTTOMLEFT", 0, -GAP)
+	playsound.tiptext = "Play sound when new events trigger."
+	playsound:SetChecked(GoodNewsEveryoneDB.playsound)
+	local checksound = playsound:GetScript("OnClick")
+	playsound:SetScript("OnClick", function(self)
+		checksound(self)
+		GoodNewsEveryoneDB.playsound = not GoodNewsEveryoneDB.playsound
+	end)
+
+
 	local group = LibStub("tekKonfig-Group").new(self, "Font")
-	group:SetPoint("TOP", showanchor, "BOTTOM", 0, -16)
+	group:SetPoint("TOP", playsound, "BOTTOM", 0, -16)
 	group:SetPoint("LEFT", 16, 0)
 	group:SetPoint("RIGHT", -16, 0)
 

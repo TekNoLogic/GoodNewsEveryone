@@ -4,7 +4,7 @@
 ----------------------
 
 local L = setmetatable({}, {__index=function(t,i) return i end})
-local defaults, db = {point = "CENTER", x = 0, y = 300, showanchor = true, font = "GameFontNormalLarge"}
+local defaults, db = {point = "CENTER", x = 0, y = 300, showanchor = true, font = "GameFontNormalLarge", playsound = true}
 
 local spells = {
 	-- Death Knight
@@ -104,6 +104,7 @@ local function OnShow(self)
 	self.text:SetFontObject(db.font)
 	self.text:SetText(" ")
 	self:SetHeight(self.text:GetStringHeight())
+	if db.playsound then PlaySound("RaidBossEmoteWarning") end
 end
 local function OnHide(self) active[self.spell] = nil end
 local function OnUpdate(self, elap)
