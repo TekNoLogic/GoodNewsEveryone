@@ -1,3 +1,9 @@
+3.2.0.3-Beta
+    Add sound
+    Add custom text for lunar/solar eclipse
+    Bum, fucking embeds
+    <bender>eeehehehehehe</bender>
+
 3.2.0.2-Beta
     Dur, I forgetted an embed
 
