@@ -54,6 +54,10 @@ local spells = {
 	46916, -- Bloodsurge (buff named "Slam!")
 	29723, -- Sudden Death
 }
+local active_spell_names = setmetatable({
+	[L["Maelstrom Ready!"] = GetSpellInfo(51528),
+}, {__index = function(t,i) return i end})
+
 
 local eclipse_wrath, _, ewicon = GetSpellInfo(48517)
 local eclipse_sf, _, esficon = GetSpellInfo(48518)
@@ -202,13 +206,17 @@ function anchor:UNIT_AURA(event, unit)
 	end
 end
 
+
 function anchor:COMBAT_TEXT_UPDATE(event, action, name, ...)
 	if action ~= "SPELL_ACTIVE" then return end
+
+	name = active_spell_names[name]
 
 	local f = active[name] or GetFrame()
 	local _, _, icon = GetSpellInfo(name)
 	f.msg, f.spell, f.stacks, f.duration, f.expires = "|T"..icon..":0|t "..name, name, 1
 	f:Show()
 end
+
 
 GOODNEWS_ANCHOR = anchor
