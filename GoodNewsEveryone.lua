@@ -32,6 +32,7 @@ local spells = {
 
 	-- Hunter
 	56342, -- Lock and Load
+	53220, -- Improved Steady Shot
 
 	-- Mage
 	44404, -- Missle Barrage
