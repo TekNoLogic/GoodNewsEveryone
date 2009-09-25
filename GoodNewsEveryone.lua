@@ -55,7 +55,7 @@ local spells = {
 	29723, -- Sudden Death
 }
 local active_spell_names = setmetatable({
-	[L["Maelstrom Ready!"] = GetSpellInfo(51528),
+	[L["Maelstrom Ready!"]] = GetSpellInfo(51528),
 }, {__index = function(t,i) return i end})
 
 
