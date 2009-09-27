@@ -29,6 +29,7 @@ local spells = {
 	-- Druid
 	16864, -- Omen of Clarity
 	48516, -- Eclipse
+	69369, -- Predator's Swiftness
 
 	-- Hunter
 	56342, -- Lock and Load
