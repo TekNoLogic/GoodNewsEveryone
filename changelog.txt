@@ -1,3 +1,15 @@
+3.2.0.4-Beta
+    Add Predator's Swiftness
+    Blizzard, consistantly inconsistant.
+
+commit 2b4fa22f732166ab6f61f96cf0bc11e929ae51c9
+Author: tekkub <tekkub@gmail.com>
+Date:   Thu Sep 24 00:45:01 2009 -0600
+
+    Add Improved Steady Shot
+
+    Closes #8
+
 3.2.0.3-Beta
     Add sound
     Add custom text for lunar/solar eclipse
