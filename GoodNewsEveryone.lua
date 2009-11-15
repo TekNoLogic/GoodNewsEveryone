@@ -54,6 +54,7 @@ local spells = {
 	-- Warrior
 	46916, -- Bloodsurge (buff named "Slam!")
 	29723, -- Sudden Death
+	46953, -- Sword and Board
 }
 local active_spell_names = setmetatable({
 	[L["Maelstrom Ready!"]] = GetSpellInfo(51528),
