@@ -1,3 +1,6 @@
+3.2.0.5-Beta
+    Sword and Board off my ass
+
 3.2.0.4-Beta
     Add Predator's Swiftness
     Blizzard, consistantly inconsistant.
