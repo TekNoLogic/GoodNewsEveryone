@@ -3,7 +3,7 @@
 --      Locals      --
 ----------------------
 
-local L = setmetatable({}, {__index=function(t,i) return i end})
+local L = setmetatable(GetLocale() == "zhTW" and {["Maelstrom Ready!"] = "氣漩準備完畢!"} or {}, {__index=function(t,i) return i end})
 local defaults, db = {point = "CENTER", x = 0, y = 300, showanchor = true, font = "GameFontNormalLarge", playsound = true}
 
 local spells = {
