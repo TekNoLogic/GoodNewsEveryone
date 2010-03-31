@@ -29,6 +29,8 @@ local spells = {
 	-- Druid
 	16864, -- Omen of Clarity
 	48516, -- Eclipse
+	48517, -- Eclipse (Solar)
+	48518, -- Eclipse (Lunar)
 	69369, -- Predator's Swiftness
 
 	-- Hunter
@@ -61,11 +63,12 @@ local active_spell_names = setmetatable({
 }, {__index = function(t,i) return i end})
 
 
+local eclipse = GetSpellInfo(48516)
 local eclipse_wrath, _, ewicon = GetSpellInfo(48517)
 local eclipse_sf, _, esficon = GetSpellInfo(48518)
 local custom_names = {
-	[eclipse_wrath..ewicon] = eclipse_wrath.. " (".. GetSpellInfo(5176).. ")",
-	[eclipse_sf..esficon] = eclipse_sf.. " (".. GetSpellInfo(2912).. ")",
+	[eclipse_wrath..ewicon] = eclipse.. " (".. GetSpellInfo(5176).. ")",
+	[eclipse_sf..esficon] = eclipse.. " (".. GetSpellInfo(2912).. ")",
 }
 
 local colors = setmetatable({}, {__index = function(t,i)
