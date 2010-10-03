@@ -1,4 +1,6 @@
 
+local IHASCAT = select(4, GetBuildInfo()) >= 40000
+
 ----------------------
 --      Locals      --
 ----------------------
@@ -6,7 +8,57 @@
 local L = setmetatable(GetLocale() == "zhTW" and {["Maelstrom Ready!"] = "氣漩準備完畢!"} or {}, {__index=function(t,i) return i end})
 local defaults, db = {point = "CENTER", x = 0, y = 300, showanchor = true, font = "GameFontNormalLarge", playsound = true}
 
-local spells = {
+local spells = IHASCAT and {
+	-- Death Knight
+	59052, -- Freezing Fog
+	51124, -- Killing Machine
+
+	-- Priest
+	33151, -- Surge of Light
+	60062, -- Essence of Life
+
+	-- Paladin
+	53569, -- Infusion of Light
+	53486, -- The Art of War
+	90174, -- Hand of Light
+
+	-- Shaman
+	51562, -- Tidal waves
+	51528, -- Maelstrom Weapon
+	16246, -- Clearcasting
+
+	-- Druid
+	16864, -- Omen of Clarity
+	48516, -- Eclipse
+	48517, -- Eclipse (Solar)
+	48518, -- Eclipse (Lunar)
+	69369, -- Predator's Swiftness
+
+	-- Hunter
+	56342, -- Lock and Load
+	53220, -- Improved Steady Shot
+
+	-- Mage
+	44404, -- Missle Barrage
+	11103, -- Impact
+	44445, -- Hot Streak
+	44543, -- Fingers of Frost
+	57761, -- Brain Freeze (buff named "Fireball!")
+
+	-- Warlock
+	47258, -- Backdraft
+	34935, -- Backlash
+	63156, -- Decimation
+	47195, -- Eradication
+	47245, -- Molten Core
+	17941, -- Nightfall (buff name "Shadow Trance")
+
+	-- Warrior
+	46916, -- Bloodsurge (buff named "Slam!")
+	29723, -- Sudden Death
+	46953, -- Sword and Board
+
+} or {
 	-- Death Knight
 	59052, -- Freezing Fog
 	51124, -- Killing Machine
@@ -180,7 +232,11 @@ function anchor:ADDON_LOADED(event, addon)
 	if not db.showanchor then anchor:Hide() end
 
 	local t = {}
-	for k,v in pairs(spells) do t[GetSpellInfo(v)] = true end
+	for k,v in pairs(spells) do
+		local i = GetSpellInfo(v)
+		if i then t[i] = true
+		else print("Good New Everyone doesn't know spell", v) end
+	end
 	spells = t
 
 	self:RegisterEvent("UNIT_AURA")
