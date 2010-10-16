@@ -1,3 +1,7 @@
+4.0.0.7-Beta
+    First stab at 4.0 updates
+    Let me know what new spells/talents/procs you want to see!
+
 3.3.0.6-Beta
     Goddamn eclipse
     zhTW maelstrom localization
