@@ -37,7 +37,7 @@ local spells = {
 	53220, -- Improved Steady Shot
 
 	-- Mage
-	44404, -- Missle Barrage
+	79683, -- Arcane Missiles!
 	11103, -- Impact
 	44445, -- Hot Streak
 	44543, -- Fingers of Frost
