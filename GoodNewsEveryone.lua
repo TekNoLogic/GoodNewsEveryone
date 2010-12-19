@@ -77,6 +77,7 @@ local colors = setmetatable({}, {__index = function(t,i)
 	return color
 end})
 
+local my_power_type, my_power_max, my_power_value, my_power_name, my_power_icon
 
 ----------------------
 --      Anchor      --
@@ -119,7 +120,7 @@ local function OnHide(self) active[self.spell] = nil end
 local function OnUpdate(self, elap)
 	local now = GetTime()
 	if self.expires and now >= self.expires then return self:Hide() end
-	if not self.expires and not IsUsableSpell(self.spell) then return self:Hide() end
+	if not self.expires and not self.not_usable and not IsUsableSpell(self.spell) then return self:Hide() end
 
 	local scale = (now <= self.scaletime) and (PULSESCALE - (PULSESCALE-1)*(self.scaletime - now)/SCALETIME) or (now <= self.shrinktime) and (1 + (PULSESCALE-1)*(self.shrinktime - now)/SHRINKTIME) or 1
 	self:SetScale(scale)
@@ -189,6 +190,13 @@ function anchor:ADDON_LOADED(event, addon)
 	self:RegisterEvent("UNIT_AURA")
 	self:RegisterEvent("COMBAT_TEXT_UPDATE")
 
+	local _, myclass = UnitClass("player")
+	if myclass == "PALADIN" then
+		self:RegisterEvent("UNIT_POWER")
+		my_power_type, my_power_value, my_power_max = "HOLY_POWER", SPELL_POWER_HOLY_POWER, UnitPowerMax("player", SPELL_POWER_HOLY_POWER)
+		my_power_name, _, my_power_icon = GetSpellInfo(85705)
+	end
+
 	self:UnregisterEvent("ADDON_LOADED")
 	self.ADDON_LOADED = nil
 
@@ -208,7 +216,7 @@ function anchor:UNIT_AURA(event, unit)
 		local name, _, icon, count, _, duration, expires = UnitAura("player", spellname)
 		if name then
 			local f = active[spellname] or GetFrame()
-			f.msg, f.spell, f.stacks, f.duration, f.expires = "|T"..icon..":0|t ".. (custom_names[spellname..icon] or spellname), spellname, count, duration, expires
+			f.msg, f.spell, f.stacks, f.duration, f.expires, f.not_usable = "|T"..icon..":0|t ".. (custom_names[spellname..icon] or spellname), spellname, count, duration, expires
 			f:Show()
 		elseif active[spellname] then active[spellname]:Hide() end
 	end
@@ -222,8 +230,19 @@ function anchor:COMBAT_TEXT_UPDATE(event, action, name, ...)
 
 	local f = active[name] or GetFrame()
 	local _, _, icon = GetSpellInfo(name)
-	f.msg, f.spell, f.stacks, f.duration, f.expires = "|T"..icon..":0|t "..name, name, 1
+	f.msg, f.spell, f.stacks, f.duration, f.expires, f.not_usable = "|T"..icon..":0|t "..name, name, 1
 	f:Show()
+end
+
+
+function anchor:UNIT_POWER(event, unit, power_type, ...)
+	if unit ~= "player" or power_type ~= my_power_type then return end
+	local charges = UnitPower("player", my_power_value)
+	if charges == my_power_max then
+		local f = active[my_power_name] or GetFrame()
+		f.msg, f.spell, f.stacks, f.not_usable, f.duration, f.expires = "|T"..my_power_icon..":0|t "..my_power_name, my_power_name, 1, true
+		f:Show()
+	elseif active[my_power_name] then active[my_power_name]:Hide() end
 end
 
 
