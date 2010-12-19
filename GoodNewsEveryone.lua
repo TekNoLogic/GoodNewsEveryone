@@ -14,6 +14,7 @@ local spells = {
 	-- Priest
 	33151, -- Surge of Light
 	60062, -- Essence of Life
+	77487, -- Shadow Bollocks
 
 	-- Paladin
 	53569, -- Infusion of Light
