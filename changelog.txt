@@ -1,3 +1,14 @@
+4.0.0.8-Beta
+    Add PallyPower™
+    BOLLOCKS!
+    Arcane Missles!
+
+commit e6b4e1f269ad026bbfbb5be2f49910b5fb96e9dd
+Author: tekkub <tekkub@gmail.com>
+Date:   Tue Nov 2 02:42:49 2010 -0600
+
+    Remove 3.0 backcompat
+
 4.0.0.7-Beta
     First stab at 4.0 updates
     Let me know what new spells/talents/procs you want to see!
