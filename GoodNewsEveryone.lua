@@ -20,6 +20,8 @@ local spells = {
 	53569, -- Infusion of Light
 	53486, -- The Art of War
 	90174, -- Hand of Light
+	85509, -- Denounce
+	88819, -- Daybreak
 
 	-- Shaman
 	51562, -- Tidal waves
