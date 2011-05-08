@@ -1,3 +1,6 @@
+4.1.0.9-Beta
+    Pally procs
+
 4.0.0.8-Beta
     Add PallyPower™
     BOLLOCKS!
