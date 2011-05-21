@@ -12,7 +12,7 @@ local spells = {
 	51124, -- Killing Machine
 
 	-- Priest
-	33151, -- Surge of Light
+	88688, -- Surge of Light
 	60062, -- Essence of Life
 	77487, -- Shadow Bollocks
 
