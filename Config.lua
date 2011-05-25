@@ -4,6 +4,8 @@ local anchor = GOODNEWS_ANCHOR
 GOODNEWS_ANCHOR = nil
 
 
+if AddonLoader and AddonLoader.RemoveInterfaceOptions then AddonLoader:RemoveInterfaceOptions("GoodNewsEveryone") end
+
 local frame = CreateFrame("Frame", nil, InterfaceOptionsFramePanelContainer)
 anchor:SetScript("OnClick", function(self) InterfaceOptionsFrame_OpenToCategory(frame) end)
 frame.name = "GoodNewsEveryone"

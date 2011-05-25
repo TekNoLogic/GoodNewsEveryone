@@ -13,6 +13,7 @@
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed
 ## X-LoadOn-LDB-Launcher: Interface\AddOns\GoodNewsEveryone\icon
+## X-LoadOn-InterfaceOptions: GoodNewsEveryone
 
 tekKonfig\tekKonfig.xml
 CallbackHandler-1.0.lua
