@@ -51,7 +51,7 @@ frame:SetScript("OnShow", function(self)
 	local group = LibStub("tekKonfig-Group").new(self, "Font")
 	group:SetPoint("TOP", playsound, "BOTTOM", 0, -16)
 	group:SetPoint("LEFT", 16, 0)
-	group:SetPoint("RIGHT", -16, 0)
+	group:SetPoint("RIGHT", self, "CENTER", -16, 0)
 
 
 	local anchor, rows, height = group, {}, 0
