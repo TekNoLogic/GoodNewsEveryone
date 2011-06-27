@@ -1,3 +1,7 @@
+4.2.0.11-Beta
+    Adjust for new big config panel
+    Add support for AddonLoader's LoadOn-InterfaceOptions thingy
+
 4.1.0.10-Beta
     Surge of Light spellID changed
 
