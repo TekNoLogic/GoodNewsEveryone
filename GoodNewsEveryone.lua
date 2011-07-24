@@ -195,6 +195,7 @@ function anchor:ADDON_LOADED(event, addon)
 	local _, myclass = UnitClass("player")
 	if myclass == "PALADIN" then
 		self:RegisterEvent("UNIT_POWER")
+		self:RegisterEvent("UNIT_MAXPOWER")
 		my_power_type, my_power_value, my_power_max = "HOLY_POWER", SPELL_POWER_HOLY_POWER, UnitPowerMax("player", SPELL_POWER_HOLY_POWER)
 		my_power_name, _, my_power_icon = GetSpellInfo(85705)
 	end
@@ -234,6 +235,11 @@ function anchor:COMBAT_TEXT_UPDATE(event, action, name, ...)
 	local _, _, icon = GetSpellInfo(name)
 	f.msg, f.spell, f.stacks, f.duration, f.expires, f.not_usable = "|T"..icon..":0|t "..name, name, 1
 	f:Show()
+end
+
+
+function anchor:UNIT_MAXPOWER()
+	my_power_max = UnitPowerMax("player", SPELL_POWER_HOLY_POWER)
 end
 
 
