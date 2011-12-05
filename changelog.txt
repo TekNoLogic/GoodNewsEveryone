@@ -1,3 +1,6 @@
+4.3.0.12-Beta
+    Fix holy power on first login for crazy people that don't use addonloader
+
 4.2.0.11-Beta
     Adjust for new big config panel
     Add support for AddonLoader's LoadOn-InterfaceOptions thingy
