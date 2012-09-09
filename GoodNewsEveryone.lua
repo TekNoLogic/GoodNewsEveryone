@@ -12,59 +12,53 @@ local spells = {
 	51124, -- Killing Machine
 
 	-- Priest
-	88688, -- Surge of Light
 	60062, -- Essence of Life
 	77487, -- Shadow Bollocks
 
 	-- Paladin
-	53569, -- Infusion of Light
-	53486, -- The Art of War
+	53576, -- Infusion of Light
+	87138, -- The Art of War
 	90174, -- Hand of Light
-	85509, -- Denounce
 	88819, -- Daybreak
 
 	-- Shaman
-	51562, -- Tidal waves
-	51528, -- Maelstrom Weapon
+	51564, -- Tidal waves
+	51530, -- Maelstrom Weapon
 	16246, -- Clearcasting
 
 	-- Druid
 	16864, -- Omen of Clarity
-	48516, -- Eclipse
 	48517, -- Eclipse (Solar)
 	48518, -- Eclipse (Lunar)
 	69369, -- Predator's Swiftness
 
 	-- Hunter
-	56342, -- Lock and Load
+	56343, -- Lock and Load
 	53220, -- Improved Steady Shot
 
 	-- Mage
 	79683, -- Arcane Missiles!
-	11103, -- Impact
-	44445, -- Hot Streak
-	44543, -- Fingers of Frost
+	112965, -- Fingers of Frost
 	57761, -- Brain Freeze (buff named "Fireball!")
 
 	-- Warlock
-	47258, -- Backdraft
-	34935, -- Backlash
-	63156, -- Decimation
-	47195, -- Eradication
-	47245, -- Molten Core
+	117896, -- Backdraft
+	108563, -- Backlash
+	108869, -- Decimation
+	122351, -- Molten Core
 	17941, -- Nightfall (buff name "Shadow Trance")
 
 	-- Warrior
 	46916, -- Bloodsurge (buff named "Slam!")
-	29723, -- Sudden Death
+	29725, -- Sudden Death
 	46953, -- Sword and Board
 }
 local active_spell_names = setmetatable({
-	[L["Maelstrom Ready!"]] = GetSpellInfo(51528),
+	[L["Maelstrom Ready!"]] = GetSpellInfo(51530),
 }, {__index = function(t,i) return i end})
 
 
-local eclipse = GetSpellInfo(48516)
+local eclipse = GetSpellInfo(80745)
 local eclipse_wrath, _, ewicon = GetSpellInfo(48517)
 local eclipse_sf, _, esficon = GetSpellInfo(48518)
 local custom_names = {
