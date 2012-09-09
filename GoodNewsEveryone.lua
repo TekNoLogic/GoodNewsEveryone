@@ -61,9 +61,12 @@ local active_spell_names = setmetatable({
 local eclipse = GetSpellInfo(80745)
 local eclipse_wrath, _, ewicon = GetSpellInfo(48517)
 local eclipse_sf, _, esficon = GetSpellInfo(48518)
-local custom_names = {
+local custom_names, unusable = {
 	[eclipse_wrath..ewicon] = eclipse.. " (".. GetSpellInfo(5176).. ")",
 	[eclipse_sf..esficon] = eclipse.. " (".. GetSpellInfo(2912).. ")",
+}, {
+	[eclipse_wrath] = true,
+	[eclipse_sf]    = true,
 }
 
 local colors = setmetatable({}, {__index = function(t,i)
@@ -194,6 +197,8 @@ function anchor:ADDON_LOADED(event, addon)
 		my_power_name, _, my_power_icon = GetSpellInfo(85705)
 	end
 
+	self:UNIT_AURA('UNIT_AURA', 'player')
+
 	self:UnregisterEvent("ADDON_LOADED")
 	self.ADDON_LOADED = nil
 
@@ -213,7 +218,10 @@ function anchor:UNIT_AURA(event, unit)
 		local name, _, icon, count, _, duration, expires = UnitAura("player", spellname)
 		if name then
 			local f = active[spellname] or GetFrame()
-			f.msg, f.spell, f.stacks, f.duration, f.expires, f.not_usable = "|T"..icon..":0|t ".. (custom_names[spellname..icon] or spellname), spellname, count, duration, expires
+			f.spell, f.stacks, f.not_usable = spellname, count, unusable[name]
+			f.msg = "|T"..icon..":0|t ".. (custom_names[spellname..icon] or spellname)
+			f.duration = duration > 0 and duration or nil
+			f.expires  =  expires > 0 and  expires or nil
 			f:Show()
 		elseif active[spellname] then active[spellname]:Hide() end
 	end
