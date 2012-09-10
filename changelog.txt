@@ -1,3 +1,7 @@
+5.0.1.13-Beta
+    Spell updates for PANDAS! (May be incomplete)
+    Fix eclipse not showing up, but still triggering audio
+
 4.3.0.12-Beta
     Fix holy power on first login for crazy people that don't use addonloader
 
