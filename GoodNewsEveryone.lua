@@ -14,6 +14,7 @@ local spells = {
 	-- Priest
 	60062, -- Essence of Life
 	77487, -- Shadow Bollocks
+	124430, -- Divine Insight
 
 	-- Paladin
 	53576, -- Infusion of Light
