@@ -42,6 +42,9 @@ local spells = {
 	112965, -- Fingers of Frost
 	57761, -- Brain Freeze (buff named "Fireball!")
 
+	-- Monk
+	125195, -- Tigereye Brew
+
 	-- Warlock
 	117896, -- Backdraft
 	108563, -- Backlash
@@ -58,6 +61,11 @@ local active_spell_names = setmetatable({
 	[L["Maelstrom Ready!"]] = GetSpellInfo(51530),
 }, {__index = function(t,i) return i end})
 
+
+local tigerseyebuff, _, tebufficon = GetSpellInfo(116740)
+local exclude = {
+	[tigerseyebuff..tebufficon] = true,
+}
 
 local eclipse = GetSpellInfo(80745)
 local eclipse_wrath, _, ewicon = GetSpellInfo(48517)
@@ -217,7 +225,7 @@ function anchor:UNIT_AURA(event, unit)
 
 	for spellname in pairs(spells) do
 		local name, _, icon, count, _, duration, expires = UnitAura("player", spellname)
-		if name then
+		if name and not exclude[spellname..icon] then
 			local f = active[spellname] or GetFrame()
 			f.spell, f.stacks, f.not_usable = spellname, count, unusable[name]
 			f.msg = "|T"..icon..":0|t ".. (custom_names[spellname..icon] or spellname)
