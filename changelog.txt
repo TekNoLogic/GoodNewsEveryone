@@ -1,3 +1,7 @@
+5.0.1.14-Beta
+    Add monk tigereye brew
+    Add priest divine insight
+
 5.0.1.13-Beta
     Spell updates for PANDAS! (May be incomplete)
     Fix eclipse not showing up, but still triggering audio
