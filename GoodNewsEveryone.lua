@@ -41,6 +41,8 @@ local spells = {
 	79683, -- Arcane Missiles!
 	112965, -- Fingers of Frost
 	57761, -- Brain Freeze (buff named "Fireball!")
+	48107, -- Heating Up
+	48108, -- Pyroblast!
 
 	-- Monk
 	125195, -- Tigereye Brew
