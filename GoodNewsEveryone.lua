@@ -21,6 +21,7 @@ local spells = {
 	87138, -- The Art of War
 	90174, -- Hand of Light
 	88819, -- Daybreak
+	85804, -- Selfless Healer
 
 	-- Shaman
 	51564, -- Tidal waves
@@ -130,7 +131,10 @@ local function OnHide(self) active[self.spell] = nil end
 local function OnUpdate(self, elap)
 	local now = GetTime()
 	if self.expires and now >= self.expires then return self:Hide() end
-	if not self.expires and not self.not_usable and not IsUsableSpell(self.spell) then return self:Hide() end
+	if not self.expires and not self.not_usable and
+		(IsPassiveSpell(self.spell) or not IsUsableSpell(self.spell)) then
+		return self:Hide()
+	end
 
 	local scale = (now <= self.scaletime) and (PULSESCALE - (PULSESCALE-1)*(self.scaletime - now)/SCALETIME) or (now <= self.shrinktime) and (1 + (PULSESCALE-1)*(self.shrinktime - now)/SHRINKTIME) or 1
 	self:SetScale(scale)
