@@ -40,6 +40,7 @@ local spells = {
 
 	-- Mage
 	79683, -- Arcane Missiles!
+	114664, -- Arcane Charge
 	112965, -- Fingers of Frost
 	57761, -- Brain Freeze (buff named "Fireball!")
 	48107, -- Heating Up
