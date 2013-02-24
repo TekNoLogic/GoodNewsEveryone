@@ -51,7 +51,9 @@ end
 
 
 function anchor:PLAYER_LOGOUT()
-	for i,v in pairs(defaults) do if ns.db[i] == v then ns.db[i] = nil end end
+	for i,v in pairs(defaults) do
+		if ns.db[i] == v then ns.db[i] = nil end
+	end
 end
 
 
