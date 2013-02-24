@@ -1,13 +1,13 @@
 
-
-local anchor = GOODNEWS_ANCHOR
-GOODNEWS_ANCHOR = nil
+local myname, ns = ...
 
 
-if AddonLoader and AddonLoader.RemoveInterfaceOptions then AddonLoader:RemoveInterfaceOptions("GoodNewsEveryone") end
+if AddonLoader and AddonLoader.RemoveInterfaceOptions then
+	AddonLoader:RemoveInterfaceOptions("GoodNewsEveryone")
+end
 
 local frame = CreateFrame("Frame", nil, InterfaceOptionsFramePanelContainer)
-anchor:SetScript("OnClick", function(self) InterfaceOptionsFrame_OpenToCategory(frame) end)
+ns.anchor:SetScript("OnClick", function(self) InterfaceOptionsFrame_OpenToCategory(frame) end)
 frame.name = "GoodNewsEveryone"
 frame:Hide()
 
@@ -24,7 +24,8 @@ frame:SetScript("OnShow", function(self)
 	showanchor:SetScript("OnClick", function(self)
 		checksound(self)
 		GoodNewsEveryoneDB.showanchor = not GoodNewsEveryoneDB.showanchor
-		if GoodNewsEveryoneDB.showanchor then anchor:Show() else anchor:Hide() end
+		if GoodNewsEveryoneDB.showanchor then ns.anchor:Show()
+		else ns.anchor:Hide() end
 	end)
 
 	local resetanchor = LibStub("tekKonfig-Button").new_small(self, "LEFT", showanchor, "RIGHT", 105, 0)
@@ -33,8 +34,8 @@ frame:SetScript("OnShow", function(self)
 	resetanchor:SetText("Reset")
 	resetanchor:SetScript("OnClick", function()
 		GoodNewsEveryoneDB.point, GoodNewsEveryoneDB.x, GoodNewsEveryoneDB.y = nil
-		anchor:ClearAllPoints()
-		anchor:SetPoint(GoodNewsEveryoneDB.point, GoodNewsEveryoneDB.x, GoodNewsEveryoneDB.y)
+		ns.anchor:ClearAllPoints()
+		ns.anchor:SetPoint(GoodNewsEveryoneDB.point, GoodNewsEveryoneDB.x, GoodNewsEveryoneDB.y)
 	end)
 
 
