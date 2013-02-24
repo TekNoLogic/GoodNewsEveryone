@@ -8,6 +8,7 @@ end
 
 local frame = CreateFrame("Frame", nil, InterfaceOptionsFramePanelContainer)
 ns.anchor:SetScript("OnClick", function(self) InterfaceOptionsFrame_OpenToCategory(frame) end)
+ns.BaseConfig = "GoodNewsEveryone"
 frame.name = "GoodNewsEveryone"
 frame:Hide()
 
@@ -19,12 +20,12 @@ frame:SetScript("OnShow", function(self)
 
 	local showanchor = tekcheck.new(self, nil, "Show anchor", "TOPLEFT", subtitle, "BOTTOMLEFT", -2, -GAP)
 	showanchor.tiptext = "Toggle the text anchor."
-	showanchor:SetChecked(GoodNewsEveryoneDB.showanchor)
+	showanchor:SetChecked(ns.db.showanchor)
 	local checksound = showanchor:GetScript("OnClick")
 	showanchor:SetScript("OnClick", function(self)
 		checksound(self)
-		GoodNewsEveryoneDB.showanchor = not GoodNewsEveryoneDB.showanchor
-		if GoodNewsEveryoneDB.showanchor then ns.anchor:Show()
+		ns.db.showanchor = not ns.db.showanchor
+		if ns.db.showanchor then ns.anchor:Show()
 		else ns.anchor:Hide() end
 	end)
 
@@ -33,19 +34,19 @@ frame:SetScript("OnShow", function(self)
 	resetanchor.tiptext = "Click to reset the anchor to it's default position."
 	resetanchor:SetText("Reset")
 	resetanchor:SetScript("OnClick", function()
-		GoodNewsEveryoneDB.point, GoodNewsEveryoneDB.x, GoodNewsEveryoneDB.y = nil
+		ns.db.point, ns.db.x, ns.db.y = nil
 		ns.anchor:ClearAllPoints()
-		ns.anchor:SetPoint(GoodNewsEveryoneDB.point, GoodNewsEveryoneDB.x, GoodNewsEveryoneDB.y)
+		ns.anchor:SetPoint(ns.db.point, ns.db.x, ns.db.y)
 	end)
 
 
 	local playsound = tekcheck.new(self, nil, "Play sound", "TOPLEFT", showanchor, "BOTTOMLEFT", 0, -GAP)
 	playsound.tiptext = "Play sound when new events trigger."
-	playsound:SetChecked(GoodNewsEveryoneDB.playsound)
+	playsound:SetChecked(ns.db.playsound)
 	local checksound = playsound:GetScript("OnClick")
 	playsound:SetScript("OnClick", function(self)
 		checksound(self)
-		GoodNewsEveryoneDB.playsound = not GoodNewsEveryoneDB.playsound
+		ns.db.playsound = not ns.db.playsound
 	end)
 
 
@@ -57,7 +58,7 @@ frame:SetScript("OnShow", function(self)
 
 	local anchor, rows, height = group, {}, 0
 	local function OnClick(self)
-		GoodNewsEveryoneDB.font = self.font
+		ns.db.font = self.font
 		for _,row in pairs(rows) do row:SetChecked(row == self) end
 	end
 	for i,name in ipairs{"GameFontNormal", "GameFontNormalLarge", "GameFontNormalHuge", "CombatTextFont", "BossEmoteNormalHuge"} do
@@ -66,7 +67,7 @@ frame:SetScript("OnShow", function(self)
 		row:SetPoint("LEFT", GAP, 0)
 		row:SetPoint("RIGHT", -GAP, 0)
 
-		row:SetChecked(name == GoodNewsEveryoneDB.font)
+		row:SetChecked(name == ns.db.font)
 		row:SetScript("OnClick", OnClick)
 
 		local highlight = row:CreateTexture()

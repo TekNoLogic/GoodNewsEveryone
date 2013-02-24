@@ -18,7 +18,11 @@ tekKonfig\tekKonfig.xml
 CallbackHandler-1.0.lua
 LibDataBroker-1.1\LibDataBroker-1.1.lua
 
+GoodNewsEveryone.lua
 Spells.lua
 Anchor.lua
-GoodNewsEveryone.lua
 Config.lua
+
+externals\print.lua
+externals\events.lua
+externals\ui-about.lua

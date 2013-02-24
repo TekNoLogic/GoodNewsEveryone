@@ -4,6 +4,5 @@
 	<Script file="tekKonfigCheckbox.lua"/>
 	<Script file="tekKonfigHeading.lua"/>
 	<Script file="tekKonfigSlider.lua"/>
-	<Script file="tekKonfigAboutPanel.lua"/>
 	<Script file="tekKonfigGroup.lua"/>
 </Ui>
