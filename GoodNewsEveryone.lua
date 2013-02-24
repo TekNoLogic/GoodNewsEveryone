@@ -59,8 +59,8 @@ function anchor:UNIT_AURA(event, unit)
 	if unit ~= "player" then return end
 
 	for spellname in pairs(ns.spells) do
-		local name, _, icon, count, _, duration, expires = UnitAura("player", spellname)
-		if name then print("GNE AURA", name, icon, count, duration, expires)
+		local filter = ns.debuffs[spellname] and 'HARMFUL' or 'HELPFUL'
+		local name, _, icon, count, _, duration, expires = UnitAura("player", spellname, nil, filter)
 		if name and not ns.exclude[spellname..icon] then
 			local f = ns.active[spellname] or ns.GetFrame()
 			f.spell, f.stacks, f.not_usable = spellname, count, ns.unusable[name]

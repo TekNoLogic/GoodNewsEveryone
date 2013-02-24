@@ -2,7 +2,7 @@
 local myname, ns = ...
 
 
-ns.spells = {}
+ns.spells, ns.debuffs = {}, {}
 local spells = {
 	-- Death Knight
 	59052, -- Freezing Fog
@@ -37,7 +37,6 @@ local spells = {
 
 	-- Mage
 	79683, -- Arcane Missiles!
-	114664, -- Arcane Charge
 	112965, -- Fingers of Frost
 	57761, -- Brain Freeze (buff named "Fireball!")
 	48107, -- Heating Up
@@ -58,9 +57,20 @@ local spells = {
 	29725, -- Sudden Death
 	46953, -- Sword and Board
 }
+local debuffs = {
+	-- Mage
+	114664, -- Arcane Charge
+}
 for k,v in pairs(spells) do
 	local i = GetSpellInfo(v)
 	if i then ns.spells[i] = true
+	else print("GoodNewsEveryone doesn't know spell", v) end
+end
+for k,v in pairs(debuffs) do
+	local i = GetSpellInfo(v)
+	if i then
+		ns.spells[i] = true
+		ns.debuffs[i] = true
 	else print("GoodNewsEveryone doesn't know spell", v) end
 end
 
