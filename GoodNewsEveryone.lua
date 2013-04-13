@@ -62,7 +62,7 @@ function ns.COMBAT_TEXT_UPDATE(event, action, name, ...)
 
 	name = ns.active_spell_names[name]
 
-	local _, _, icon = GetSpellInfo(name)
+	local icon = select(3, GetSpellInfo(name)) or ns.spells[name]
 	if not icon then return ns.Print('Unknown spell:', name, ...) end
 
 	local f = ns.active[name] or ns.GetFrame()

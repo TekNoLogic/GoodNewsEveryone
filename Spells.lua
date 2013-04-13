@@ -62,14 +62,14 @@ local debuffs = {
 	114664, -- Arcane Charge
 }
 for k,v in pairs(spells) do
-	local i = GetSpellInfo(v)
-	if i then ns.spells[i] = true
+	local i, _, icon = GetSpellInfo(v)
+	if i then ns.spells[i] = icon
 	else print("GoodNewsEveryone doesn't know spell", v) end
 end
 for k,v in pairs(debuffs) do
-	local i = GetSpellInfo(v)
+	local i, _, icon = GetSpellInfo(v)
 	if i then
-		ns.spells[i] = true
+		ns.spells[i] = icon
 		ns.debuffs[i] = true
 	else print("GoodNewsEveryone doesn't know spell", v) end
 end
