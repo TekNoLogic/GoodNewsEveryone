@@ -43,6 +43,8 @@ local spells = {
 	48108, -- Pyroblast!
 
 	-- Monk
+	116768, -- Combo Breaker: Blackout Kick
+	118864, -- Combo Breaker: Tiger Palm
 	125195, -- Tigereye Brew
 
 	-- Warlock
@@ -84,6 +86,7 @@ ns.active_spell_names = setmetatable({
 local tigerseyebuff, _, tebufficon = GetSpellInfo(116740)
 ns.exclude = {
 	[tigerseyebuff..tebufficon] = true,
+	['+1 Tigereye Brew'] = true,
 }
 
 
