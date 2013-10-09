@@ -64,14 +64,14 @@ local debuffs = {
 for k,v in pairs(spells) do
 	local i, _, icon = GetSpellInfo(v)
 	if i then ns.spells[i] = icon
-	else print("GoodNewsEveryone doesn't know spell", v) end
+	else ns.print("Unknown spell:", v) end
 end
 for k,v in pairs(debuffs) do
 	local i, _, icon = GetSpellInfo(v)
 	if i then
 		ns.spells[i] = icon
 		ns.debuffs[i] = true
-	else print("GoodNewsEveryone doesn't know spell", v) end
+	else ns.print("Unknown spell:", v) end
 end
 
 local MAELSTROM_READY = GetLocale() == "zhTW" and "氣漩準備完畢!"
