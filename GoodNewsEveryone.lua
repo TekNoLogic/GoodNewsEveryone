@@ -33,7 +33,7 @@ end
 
 
 local function GetMsg(spellname, icon)
-	return "|T"..icon..":0|t ".. (ns.custom_names[spellname..icon] or spellname)
+	return "|T"..icon..":0|t ".. spellname
 end
 
 
@@ -47,7 +47,7 @@ function ns.UNIT_AURA(event, unit)
 
 		if name and not ns.exclude[spellname..icon] then
 			local f = ns.active[spellname] or ns.GetFrame()
-			f.spell, f.stacks, f.not_usable = spellname, count, ns.unusable[name]
+			f.spell, f.stacks = spellname, count
 			f.msg = GetMsg(spellname, icon)
 			f.duration = duration > 0 and duration or nil
 			f.expires  =  expires > 0 and  expires or nil

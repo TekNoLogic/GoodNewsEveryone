@@ -55,7 +55,7 @@ local function OnHide(self) ns.active[self.spell] = nil end
 local function OnUpdate(self, elap)
 	local now = GetTime()
 	if self.expires and now >= self.expires then return self:Hide() end
-	if not self.expires and not self.not_usable and
+	if not self.expires and
 		(IsPassiveSpell(self.spell) or not IsUsableSpell(self.spell)) then
 		return self:Hide()
 	end

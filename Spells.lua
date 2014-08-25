@@ -27,8 +27,8 @@ local spells = {
 
 	-- Druid
 	16864, -- Omen of Clarity
-	48517, -- Eclipse (Solar)
-	48518, -- Eclipse (Lunar)
+	171743, -- Lunar Peak
+	171744, -- Solar Peak
 	69369, -- Predator's Swiftness
 
 	-- Hunter
@@ -87,16 +87,4 @@ local tigerseyebuff, _, tebufficon = GetSpellInfo(116740)
 ns.exclude = {
 	[tigerseyebuff..tebufficon] = true,
 	['+1 Tigereye Brew'] = true,
-}
-
-
-local eclipse = GetSpellInfo(80745)
-local eclipse_wrath, _, ewicon = GetSpellInfo(48517)
-local eclipse_sf, _, esficon = GetSpellInfo(48518)
-ns.custom_names, ns.unusable = {
-	[eclipse_wrath..ewicon] = eclipse.. " (".. GetSpellInfo(5176).. ")",
-	[eclipse_sf..esficon] = eclipse.. " (".. GetSpellInfo(2912).. ")",
-}, {
-	[eclipse_wrath] = true,
-	[eclipse_sf]    = true,
 }
