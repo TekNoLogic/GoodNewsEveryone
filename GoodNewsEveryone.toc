@@ -14,6 +14,10 @@
 ## X-LoadOn-LDB-Launcher: Interface\AddOns\GoodNewsEveryone\icon
 ## X-LoadOn-InterfaceOptions: GoodNewsEveryone
 
+externals\print.lua
+externals\events.lua
+externals\ui-about.lua
+
 tekKonfig\tekKonfig.xml
 CallbackHandler-1.0.lua
 LibDataBroker-1.1\LibDataBroker-1.1.lua
@@ -22,7 +26,3 @@ GoodNewsEveryone.lua
 Spells.lua
 Anchor.lua
 Config.lua
-
-externals\print.lua
-externals\events.lua
-externals\ui-about.lua
