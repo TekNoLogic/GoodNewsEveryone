@@ -23,7 +23,6 @@ local spells = {
 	-- Shaman
 	51564, -- Tidal waves
 	51530, -- Maelstrom Weapon
-	16246, -- Clearcasting
 
 	-- Druid
 	16864, -- Omen of Clarity
@@ -33,7 +32,6 @@ local spells = {
 
 	-- Hunter
 	56343, -- Lock and Load
-	53220, -- Improved Steady Shot
 
 	-- Mage
 	79683, -- Arcane Missiles!
@@ -49,7 +47,6 @@ local spells = {
 
 	-- Warlock
 	117896, -- Backdraft
-	108563, -- Backlash
 	108869, -- Decimation
 	122351, -- Molten Core
 	17941, -- Nightfall (buff name "Shadow Trance")
