@@ -31,7 +31,8 @@ local spells = {
 	69369, -- Predator's Swiftness
 
 	-- Hunter
-	56343, -- Lock and Load
+	168980, -- Lock and Load
+	34720, -- Thrill of the Hunt
 
 	-- Mage
 	79683, -- Arcane Missiles!
