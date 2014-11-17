@@ -19,6 +19,7 @@ local spells = {
 	90174, -- Hand of Light
 	88819, -- Daybreak
 	85804, -- Selfless Healer
+	174718, -- Empowered Divine Storm
 
 	-- Shaman
 	51564, -- Tidal waves
@@ -29,6 +30,7 @@ local spells = {
 	171743, -- Lunar Peak
 	171744, -- Solar Peak
 	69369, -- Predator's Swiftness
+	16870, -- Clearcasting
 
 	-- Hunter
 	168980, -- Lock and Load
@@ -45,6 +47,9 @@ local spells = {
 	116768, -- Combo Breaker: Blackout Kick
 	118864, -- Combo Breaker: Tiger Palm
 	125195, -- Tigereye Brew
+
+	-- Rogue
+	121153, -- Blindside
 
 	-- Warlock
 	117896, -- Backdraft
