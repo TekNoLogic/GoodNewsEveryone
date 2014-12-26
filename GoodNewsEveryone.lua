@@ -60,6 +60,7 @@ end
 function ns.COMBAT_TEXT_UPDATE(event, action, name, ...)
 	if action ~= "SPELL_ACTIVE" or ns.exclude[name] then return end
 
+	name = name:gsub("!$", "")
 	name = ns.active_spell_names[name]
 
 	local icon = select(3, GetSpellInfo(name)) or ns.spells[name]
