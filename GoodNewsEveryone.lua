@@ -19,6 +19,12 @@ function ns.OnLoad()
 	ns.RegisterEvent("COMBAT_TEXT_UPDATE")
 
 	local _, myclass = UnitClass("player")
+	if myclass == "MAGE" then
+		ns.RegisterEvent("PLAYER_TARGET_CHANGED")
+	else
+		ns.PLAYER_TARGET_CHANGED = function() end
+	end
+
 	if myclass == "PALADIN" then
 		ns.RegisterEvent("UNIT_POWER")
 		ns.RegisterEvent("UNIT_MAXPOWER")
@@ -38,6 +44,7 @@ end
 
 
 function ns.UNIT_AURA(event, unit)
+	if unit == "target" then return ns.PLAYER_TARGET_CHANGED() end
 	if unit ~= "player" then return end
 
 	for spellname in pairs(ns.spells) do
@@ -88,4 +95,27 @@ function ns.UNIT_POWER(event, unit, power_type, ...)
 		f.duration, f.expires = nil
 		f:Show()
 	elseif ns.active[my_power_name] then ns.active[my_power_name]:Hide() end
+end
+
+
+local function HasStealableBuff()
+	for i=1,50 do
+		local name, _, _, _, _, _, _, _, stealable = UnitAura("target", i, "HELPFUL")
+		if not name then return false end
+		if stealable then return true end
+	end
+end
+
+
+-- Spellsteal
+local name, _, icon = GetSpellInfo(30449)
+function ns.PLAYER_TARGET_CHANGED()
+	if HasStealableBuff() then
+		local f = ns.active[name] or ns.GetFrame()
+		f.msg, f.spell, f.stacks = GetMsg(name, icon), name, 1
+		f.duration, f.expires, f.not_usable = nil
+		f:Show()
+	elseif ns.active[name] then
+		ns.active[name]:Hide()
+	end
 end
