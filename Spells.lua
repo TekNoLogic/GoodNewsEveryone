@@ -10,62 +10,41 @@ local spells = {
 
 	-- Priest
 	60062, -- Essence of Life
-	77487, -- Shadow Bollocks
 	124430, -- Divine Insight
 	87160, -- Surge of Darkness
 
 	-- Paladin
 	53576, -- Infusion of Light
-	87138, -- The Art of War
-	90174, -- Hand of Light
-	88819, -- Daybreak
 	85804, -- Selfless Healer
-	174718, -- Empowered Divine Storm
 
 	-- Shaman
 	51564, -- Tidal waves
-	51530, -- Maelstrom Weapon
 
 	-- Druid
 	16864, -- Omen of Clarity
-	171743, -- Lunar Peak
-	171744, -- Solar Peak
 	69369, -- Predator's Swiftness
 	16870, -- Clearcasting
 
 	-- Hunter
-	168980, -- Lock and Load
-	34720, -- Thrill of the Hunt
 
 	-- Mage
 	79683, -- Arcane Missiles!
 	112965, -- Fingers of Frost
-	57761, -- Brain Freeze (buff named "Fireball!")
 	48107, -- Heating Up
 	48108, -- Pyroblast!
 
 	-- Monk
 	116768, -- Combo Breaker: Blackout Kick
-	118864, -- Combo Breaker: Tiger Palm
-	125195, -- Tigereye Brew
 
 	-- Rogue
-	121153, -- Blindside
 
 	-- Warlock
-	117896, -- Backdraft
-	108869, -- Decimation
-	122351, -- Molten Core
 	17941, -- Nightfall (buff name "Shadow Trance")
 
 	-- Warrior
-	46916, -- Bloodsurge (buff named "Slam!")
-	29725, -- Sudden Death
 	46953, -- Sword and Board
 }
 local debuffs = {
-	-- Mage
-	114664, -- Arcane Charge
 }
 for k,v in pairs(spells) do
 	local i, _, icon = GetSpellInfo(v)
