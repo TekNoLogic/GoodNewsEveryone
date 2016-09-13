@@ -19,6 +19,7 @@ local spells = {
 
 	-- Shaman
 	51564, -- Tidal waves
+	77762, -- Lava surge
 
 	-- Druid
 	16864, -- Omen of Clarity
