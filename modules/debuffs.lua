@@ -5,11 +5,6 @@ local myname, ns = ...
 local DEBUFFS = {}
 
 
-local function GetMsg(spellname, icon)
-	return "|T"..icon..":0|t ".. spellname
-end
-
-
 local function OnEvent(self, event, unit)
 	if unit ~= "target" then return end
 
@@ -20,7 +15,7 @@ local function OnEvent(self, event, unit)
 		if name then
 			local f = ns.active[spellname] or ns.GetFrame()
 			f.spell, f.stacks = spellname, count
-			f.msg = GetMsg(spellname, icon)
+			f.msg = ns.GetMsg(spellname, icon)
 			f.duration = duration > 0 and duration or nil
 			f.expires  =  expires > 0 and  expires or nil
 			f:Show()

@@ -38,7 +38,7 @@ function ns.OnLoad()
 end
 
 
-local function GetMsg(spellname, icon)
+function ns.GetMsg(spellname, icon)
 	return "|T"..icon..":0|t ".. spellname
 end
 
@@ -55,7 +55,7 @@ function ns.UNIT_AURA(event, unit)
 		if name and not ns.exclude[spellname..icon] then
 			local f = ns.active[spellname] or ns.GetFrame()
 			f.spell, f.stacks = spellname, count
-			f.msg = GetMsg(spellname, icon)
+			f.msg = ns.GetMsg(spellname, icon)
 			f.duration = duration > 0 and duration or nil
 			f.expires  =  expires > 0 and  expires or nil
 			f:Show()
@@ -74,7 +74,7 @@ function ns.COMBAT_TEXT_UPDATE(event, action, name, ...)
 	if not icon then return ns.Print('Unknown spell:', name, ...) end
 
 	local f = ns.active[name] or ns.GetFrame()
-	f.msg, f.spell, f.stacks = GetMsg(name, icon), name, 1
+	f.msg, f.spell, f.stacks = ns.GetMsg(name, icon), name, 1
 	f.duration, f.expires, f.not_usable = nil
 	f:Show()
 end
@@ -90,7 +90,7 @@ function ns.UNIT_POWER(event, unit, power_type, ...)
 	local charges = UnitPower("player", my_power_value)
 	if charges == my_power_max then
 		local f = ns.active[my_power_name] or ns.GetFrame()
-		f.msg, f.spell = GetMsg(my_power_name, my_power_icon), my_power_name
+		f.msg, f.spell = ns.GetMsg(my_power_name, my_power_icon), my_power_name
 		f.stacks, f.not_usable = 1, true
 		f.duration, f.expires = nil
 		f:Show()
@@ -112,7 +112,7 @@ local name, _, icon = GetSpellInfo(30449)
 function ns.PLAYER_TARGET_CHANGED()
 	if HasStealableBuff() then
 		local f = ns.active[name] or ns.GetFrame()
-		f.msg, f.spell, f.stacks = GetMsg(name, icon), name, 1
+		f.msg, f.spell, f.stacks = ns.GetMsg(name, icon), name, 1
 		f.duration, f.expires, f.not_usable = nil
 		f:Show()
 	elseif ns.active[name] then
