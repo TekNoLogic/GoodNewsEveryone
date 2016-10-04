@@ -24,8 +24,9 @@ LibDataBroker-1.1\LibDataBroker-1.1.lua
 
 GoodNewsEveryone.lua
 Spells.lua
-Anchor.lua
 Config.lua
+
+frames\anchor.lua
 
 class_config\hunter.lua
 
