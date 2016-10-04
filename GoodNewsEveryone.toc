@@ -26,3 +26,7 @@ GoodNewsEveryone.lua
 Spells.lua
 Anchor.lua
 Config.lua
+
+class_config\hunter.lua
+
+modules\debuffs.lua

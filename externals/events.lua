@@ -34,6 +34,13 @@ local function ProcessOnLoad(arg1)
 		ns.dbpc = _G[ns.dbpcname]
 	end
 
+	for i,v in pairs(ns) do
+		if i:match("^OnLoad.") then
+			ns[i]()
+			ns[i] = nil
+		end
+	end
+
 	if ns.OnLoad then
 		ns.OnLoad()
 		ns.OnLoad = nil
