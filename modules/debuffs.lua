@@ -39,7 +39,7 @@ function ns.OnLoadDebuffs()
 		if i then
 			DEBUFFS[i] = icon
 		else
-			ns.Print("Unknown spell:", v)
+			ns.Print("Unknown debuff:", v)
 		end
 	end
 
