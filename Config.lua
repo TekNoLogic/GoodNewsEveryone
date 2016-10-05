@@ -7,10 +7,17 @@ if AddonLoader and AddonLoader.RemoveInterfaceOptions then
 end
 
 local frame = CreateFrame("Frame", nil, InterfaceOptionsFramePanelContainer)
-ns.anchor:SetScript("OnClick", function(self) InterfaceOptionsFrame_OpenToCategory(frame) end)
 ns.BaseConfig = "GoodNewsEveryone"
 frame.name = "GoodNewsEveryone"
 frame:Hide()
+
+
+function ns.OnLoadConfig()
+	ns.anchor:SetScript("OnClick", function(self)
+		InterfaceOptionsFrame_OpenToCategory(frame)
+	end)
+end
+
 
 frame:SetScript("OnShow", function(self)
 	local GAP, EDGEGAP = 8, 16
@@ -105,4 +112,3 @@ InterfaceOptions_AddCategory(frame)
 local ldb = LibStub:GetLibrary("LibDataBroker-1.1")
 local dataobj = ldb:GetDataObjectByName("GoodNewsEveryone") or ldb:NewDataObject("GoodNewsEveryone", {type = "launcher", icon = "Interface\\AddOns\\GoodNewsEveryone\\icon", tocname = "GoodNewsEveryone"})
 dataobj.OnClick = function() InterfaceOptionsFrame_OpenToCategory(frame) end
-
