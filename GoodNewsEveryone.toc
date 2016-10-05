@@ -30,6 +30,8 @@ frames\alert.lua
 frames\alert_scaler.lua
 frames\anchor.lua
 
-class_config\hunter.lua
-
 modules\debuffs.lua
+modules\expiring_debuffs.lua
+
+class_config\hunter.lua
+class_config\shaman.lua
