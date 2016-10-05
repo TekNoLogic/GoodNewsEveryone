@@ -10,7 +10,6 @@ ns.dbname, ns.dbdefaults = 'GoodNewsEveryoneDB', {
 }
 
 
-local my_power_type, my_power_max, my_power_value, my_power_name, my_power_icon
 function ns.OnLoad()
 	ns.anchor:SetPoint(ns.db.point, ns.db.x, ns.db.y)
 	if not ns.db.showanchor then ns.anchor:Hide() end
@@ -23,15 +22,6 @@ function ns.OnLoad()
 		ns.RegisterEvent("PLAYER_TARGET_CHANGED")
 	else
 		ns.PLAYER_TARGET_CHANGED = function() end
-	end
-
-	if myclass == "PALADIN" then
-		ns.RegisterEvent("UNIT_POWER")
-		ns.RegisterEvent("UNIT_MAXPOWER")
-		my_power_type = "HOLY_POWER"
-		my_power_value = SPELL_POWER_HOLY_POWER
-		my_power_max = UnitPowerMax("player", SPELL_POWER_HOLY_POWER)
-		my_power_name, _, my_power_icon = GetSpellInfo(85705)
 	end
 
 	ns.UNIT_AURA('UNIT_AURA', 'player')
@@ -77,24 +67,6 @@ function ns.COMBAT_TEXT_UPDATE(event, action, name, ...)
 	f.msg, f.spell, f.stacks = ns.GetMsg(name, icon), name, 1
 	f.duration, f.expires, f.not_usable = nil
 	f:Show()
-end
-
-
-function ns.UNIT_MAXPOWER()
-	my_power_max = UnitPowerMax("player", SPELL_POWER_HOLY_POWER)
-end
-
-
-function ns.UNIT_POWER(event, unit, power_type, ...)
-	if unit ~= "player" or power_type ~= my_power_type then return end
-	local charges = UnitPower("player", my_power_value)
-	if charges == my_power_max then
-		local f = ns.active[my_power_name] or ns.GetFrame()
-		f.msg, f.spell = ns.GetMsg(my_power_name, my_power_icon), my_power_name
-		f.stacks, f.not_usable = 1, true
-		f.duration, f.expires = nil
-		f:Show()
-	elseif ns.active[my_power_name] then ns.active[my_power_name]:Hide() end
 end
 
 

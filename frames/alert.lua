@@ -43,6 +43,7 @@ local passive = setmetatable({}, {
 
 
 local function ShouldHide(self)
+	if self.not_usable then return false end
 	if self.expires then return GetTime() >= self.expires end
 	if passive[self.spell] then return true end
 	return not IsUsableSpell(self.spell)

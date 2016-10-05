@@ -32,6 +32,8 @@ frames\anchor.lua
 
 modules\debuffs.lua
 modules\expiring_debuffs.lua
+modules\power.lua
 
 class_config\hunter.lua
+class_config\paladin.lua
 class_config\shaman.lua
