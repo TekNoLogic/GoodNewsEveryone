@@ -22,8 +22,6 @@ local function UNIT_POWER(event, unit, power_type, ...)
 		alert.duration = nil
 		alert.expires = nil
 		alert:Show()
-		print(alert)
-		TEKALERT = alert
 	elseif ns.active[my_power_name] then
 		ns.active[my_power_name]:Hide()
 	end
