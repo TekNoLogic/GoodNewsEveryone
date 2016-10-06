@@ -30,6 +30,7 @@ frames\alert.lua
 frames\alert_scaler.lua
 frames\anchor.lua
 
+modules\buffs.lua
 modules\debuffs.lua
 modules\expiring_debuffs.lua
 modules\power.lua
