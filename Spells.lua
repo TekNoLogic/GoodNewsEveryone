@@ -17,10 +17,6 @@ local spells = {
 	53576, -- Infusion of Light
 	85804, -- Selfless Healer
 
-	-- Shaman
-	51564, -- Tidal waves
-	77762, -- Lava surge
-
 	-- Druid
 	16864, -- Omen of Clarity
 	69369, -- Predator's Swiftness

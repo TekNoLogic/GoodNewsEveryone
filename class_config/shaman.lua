@@ -7,6 +7,7 @@ if myclass ~= "SHAMAN" then return end
 
 
 ns.BUFF_IDS = {
+  51564, -- Tidal waves
   77756, -- Lava surge
 }
 
