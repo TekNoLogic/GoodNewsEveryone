@@ -19,6 +19,13 @@ local function Show(debuff, icon, count, duration, expires)
 end
 
 
+local function Hide(debuff)
+	if ns.active[debuff] then
+		ns.active[debuff]:Hide()
+	end
+end
+
+
 local function Scan()
 	local now = GetTime()
 	for key,time in pairs(pending) do
@@ -33,14 +40,16 @@ local function Scan()
 			if (expires - now) <= 5 then
 				Show(debuff, icon, count, duration, expires)
 			else
+				Hide(debuff)
+
 				local key = debuff.. expires
 				if not pending[key] then
-				 	pending[key] = expires
+				 	pending[key] = expires - 5
 					C_Timer.After(duration - 5, Scan)
 				end
 			end
-		elseif ns.active[debuff] then
-			ns.active[debuff]:Hide()
+		else
+			Hide(debuff)
 		end
 	end
 end
