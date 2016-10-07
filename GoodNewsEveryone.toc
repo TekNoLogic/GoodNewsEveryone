@@ -37,6 +37,7 @@ modules\expiring_debuffs.lua
 modules\power.lua
 
 class_config\hunter.lua
+class_config\mage.lua
 class_config\monk.lua
 class_config\paladin.lua
 class_config\shaman.lua

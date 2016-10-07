@@ -18,12 +18,6 @@ local spells = {
 	69369, -- Predator's Swiftness
 	16870, -- Clearcasting
 
-	-- Mage
-	79683, -- Arcane Missiles!
-	112965, -- Fingers of Frost
-	48107, -- Heating Up
-	48108, -- Pyroblast!
-
 	-- Warlock
 	17941, -- Nightfall (buff name "Shadow Trance")
 

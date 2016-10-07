@@ -15,15 +15,7 @@ function ns.OnLoad()
 	if not ns.db.showanchor then ns.anchor:Hide() end
 
 	ns.RegisterEvent("UNIT_AURA")
-
-	local _, myclass = UnitClass("player")
-	if myclass == "MAGE" then
-		ns.RegisterEvent("PLAYER_TARGET_CHANGED")
-	else
-		ns.PLAYER_TARGET_CHANGED = function() end
-	end
-
-	ns.UNIT_AURA('UNIT_AURA', 'player')
+	ns.UNIT_AURA("UNIT_AURA", "player")
 
 	-- Do this here because we know it'll happen after all modules have init'd
 	ns.BUFF_IDS = nil
@@ -54,27 +46,4 @@ function ns.UNIT_AURA(event, unit)
 		elseif ns.active[spellname] then ns.active[spellname]:Hide() end
 	end
 end
-end
-
-
-local function HasStealableBuff()
-	for i=1,50 do
-		local name, _, _, _, _, _, _, _, stealable = UnitAura("target", i, "HELPFUL")
-		if not name then return false end
-		if stealable then return true end
-	end
-end
-
-
--- Spellsteal
-local name, _, icon = GetSpellInfo(30449)
-function ns.PLAYER_TARGET_CHANGED()
-	if HasStealableBuff() then
-		local f = ns.active[name] or ns.GetFrame()
-		f.msg, f.spell, f.stacks = ns.GetMsg(name, icon), name, 1
-		f.duration, f.expires, f.not_usable = nil
-		f:Show()
-	elseif ns.active[name] then
-		ns.active[name]:Hide()
-	end
 end
