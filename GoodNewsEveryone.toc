@@ -23,7 +23,6 @@ CallbackHandler-1.0.lua
 LibDataBroker-1.1\LibDataBroker-1.1.lua
 
 GoodNewsEveryone.lua
-Spells.lua
 Config.lua
 
 frames\alert.lua
@@ -36,8 +35,13 @@ modules\debuffs.lua
 modules\expiring_debuffs.lua
 modules\power.lua
 
+class_config\deathknight.lua
+class_config\druid.lua
 class_config\hunter.lua
 class_config\mage.lua
 class_config\monk.lua
 class_config\paladin.lua
+class_config\priest.lua
 class_config\shaman.lua
+class_config\warlock.lua
+class_config\warrior.lua
