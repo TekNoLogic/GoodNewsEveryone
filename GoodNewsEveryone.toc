@@ -23,13 +23,15 @@ CallbackHandler-1.0.lua
 LibDataBroker-1.1\LibDataBroker-1.1.lua
 
 init.lua
-Config.lua
 
 services\get_msg.lua
+services\ldb_launcher.lua
 
 frames\alert.lua
 frames\alert_scaler.lua
 frames\anchor.lua
+frames\config.lua
+frames\config_font_row.lua
 
 modules\buffs.lua
 modules\combat_text.lua

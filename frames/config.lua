@@ -6,8 +6,10 @@ if AddonLoader and AddonLoader.RemoveInterfaceOptions then
 	AddonLoader:RemoveInterfaceOptions("GoodNewsEveryone")
 end
 
+
 local frame = CreateFrame("Frame", nil, InterfaceOptionsFramePanelContainer)
 ns.BaseConfig = "GoodNewsEveryone"
+ns.config_frame = frame
 frame.name = "GoodNewsEveryone"
 frame:Hide()
 
@@ -63,52 +65,34 @@ frame:SetScript("OnShow", function(self)
 	group:SetPoint("RIGHT", self, "CENTER", -16, 0)
 
 
-	local anchor, rows, height = group, {}, 0
-	local function OnClick(self)
-		ns.db.font = self.font
-		for _,row in pairs(rows) do row:SetChecked(row == self) end
-	end
-	for i,name in ipairs{"GameFontNormal", "GameFontNormalLarge", "GameFontNormalHuge", "CombatTextFont", "BossEmoteNormalHuge"} do
-		local row = CreateFrame("CheckButton", nil, group)
-		row:SetPoint("TOP", anchor, i == 1 and "TOP" or "BOTTOM", 0, i == 1 and -GAP or 0)
+	local anchor
+	local height = 0
+	local FONTS = {
+		"GameFontNormal",
+		"GameFontNormalLarge",
+		"GameFontNormalHuge",
+		"CombatTextFont",
+		"BossEmoteNormalHuge",
+	}
+	for i,name in ipairs(FONTS) do
+		local row = ns.NewConfigFontRow(group, name)
+		if i == 1 then
+			row:SetPoint("TOP", group, 0, -GAP)
+		else
+			row:SetPoint("TOP", anchor, "BOTTOM")
+		end
 		row:SetPoint("LEFT", GAP, 0)
 		row:SetPoint("RIGHT", -GAP, 0)
 
-		row:SetChecked(name == ns.db.font)
-		row:SetScript("OnClick", OnClick)
-
-		local highlight = row:CreateTexture()
-		highlight:SetTexture("Interface\\HelpFrame\\HelpFrameButton-Highlight")
-		highlight:SetTexCoord(0, 1, 0, 0.578125)
-		highlight:SetAllPoints()
-		row:SetHighlightTexture(highlight)
-		row:SetCheckedTexture(highlight)
-
-		local text = row:CreateFontString(nil, nil, name)
-		text:SetPoint("LEFT", row)
-		text:SetPoint("RIGHT", row)
-		text:SetText(name)
-
-		row:SetHeight(text:GetStringHeight() + GAP)
-		height = height + text:GetStringHeight() + GAP
-
-		table.insert(rows, row)
+		height = height + row:GetHeight()
 		anchor = row
-		row.font = name
 	end
 
 	group:SetHeight(height + GAP*2)
 
 	self:SetScript("OnShow", nil)
+	ns.NewConfigFontRow = nil
 end)
 
+
 InterfaceOptions_AddCategory(frame)
-
-
-----------------------------
---      LDB Launcher      --
-----------------------------
-
-local ldb = LibStub:GetLibrary("LibDataBroker-1.1")
-local dataobj = ldb:GetDataObjectByName("GoodNewsEveryone") or ldb:NewDataObject("GoodNewsEveryone", {type = "launcher", icon = "Interface\\AddOns\\GoodNewsEveryone\\icon", tocname = "GoodNewsEveryone"})
-dataobj.OnClick = function() InterfaceOptionsFrame_OpenToCategory(frame) end
