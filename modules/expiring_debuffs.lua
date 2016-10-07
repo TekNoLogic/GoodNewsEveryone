@@ -61,7 +61,7 @@ local function OnEvent(self, event, unit, ...)
 end
 
 
-function ns.OnLoadDebuffs()
+function ns.OnLoadExpiringDebuffs()
 	if not ns.EXPIRING_DEBUFF_IDS then return end
 
 	for k,v in pairs(ns.EXPIRING_DEBUFF_IDS) do
