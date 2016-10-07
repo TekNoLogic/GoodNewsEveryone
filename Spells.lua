@@ -13,16 +13,10 @@ local spells = {
 	124430, -- Divine Insight
 	87160, -- Surge of Darkness
 
-	-- Paladin
-	53576, -- Infusion of Light
-	85804, -- Selfless Healer
-
 	-- Druid
 	16864, -- Omen of Clarity
 	69369, -- Predator's Swiftness
 	16870, -- Clearcasting
-
-	-- Hunter
 
 	-- Mage
 	79683, -- Arcane Missiles!
