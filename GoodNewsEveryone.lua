@@ -15,7 +15,6 @@ function ns.OnLoad()
 	if not ns.db.showanchor then ns.anchor:Hide() end
 
 	ns.RegisterEvent("UNIT_AURA")
-	ns.RegisterEvent("COMBAT_TEXT_UPDATE")
 
 	local _, myclass = UnitClass("player")
 	if myclass == "MAGE" then
@@ -25,6 +24,9 @@ function ns.OnLoad()
 	end
 
 	ns.UNIT_AURA('UNIT_AURA', 'player')
+
+	-- Do this here because we know it'll happen after all modules have init'd
+	ns.BUFF_IDS = nil
 end
 
 
@@ -52,20 +54,6 @@ function ns.UNIT_AURA(event, unit)
 		elseif ns.active[spellname] then ns.active[spellname]:Hide() end
 	end
 end
-
-
-function ns.COMBAT_TEXT_UPDATE(event, action, name, ...)
-	if action ~= "SPELL_ACTIVE" or ns.exclude[name] then return end
-
-	name = name:gsub("!$", "")
-
-	local icon = select(3, GetSpellInfo(name)) or ns.spells[name]
-	if not icon then return ns.Print('Unknown spell:', name, ...) end
-
-	local f = ns.active[name] or ns.GetFrame()
-	f.msg, f.spell, f.stacks = ns.GetMsg(name, icon), name, 1
-	f.duration, f.expires, f.not_usable = nil
-	f:Show()
 end
 
 

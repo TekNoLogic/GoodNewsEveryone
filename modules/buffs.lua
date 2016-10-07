@@ -36,8 +36,6 @@ function ns.OnLoadBuffs()
 		end
 	end
 
-	ns.BUFF_IDS = nil
-
 	local frame = CreateFrame("Frame")
 	frame:RegisterEvent("UNIT_AURA")
 	frame:SetScript("OnEvent", OnEvent)
