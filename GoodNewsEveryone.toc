@@ -22,8 +22,10 @@ tekKonfig\tekKonfig.xml
 CallbackHandler-1.0.lua
 LibDataBroker-1.1\LibDataBroker-1.1.lua
 
-GoodNewsEveryone.lua
+init.lua
 Config.lua
+
+services\get_msg.lua
 
 frames\alert.lua
 frames\alert_scaler.lua

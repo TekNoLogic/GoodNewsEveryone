@@ -17,8 +17,3 @@ function ns.OnLoad()
 	-- Do this here because we know it'll happen after all modules have init'd
 	ns.BUFF_IDS = nil
 end
-
-
-function ns.GetMsg(spellname, icon)
-	return "|T"..icon..":0|t ".. spellname
-end
