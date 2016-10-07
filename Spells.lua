@@ -46,9 +46,3 @@ for k,v in pairs(debuffs) do
 		ns.debuffs[i] = true
 	else ns.Print("Unknown spell:", v) end
 end
-
-local MAELSTROM_READY = GetLocale() == "zhTW" and "氣漩準備完畢!"
-                        or "Maelstrom Ready!"
-ns.active_spell_names = setmetatable({
-	[MAELSTROM_READY] = GetSpellInfo(51530),
-}, {__index = function(t,i) return i end})
