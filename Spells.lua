@@ -2,7 +2,7 @@
 local myname, ns = ...
 
 
-ns.spells, ns.debuffs = {}, {}
+ns.spells = {}
 local spells = {
 	-- Death Knight
 	59052, -- Freezing Fog
@@ -24,25 +24,14 @@ local spells = {
 	48107, -- Heating Up
 	48108, -- Pyroblast!
 
-	-- Rogue
-
 	-- Warlock
 	17941, -- Nightfall (buff name "Shadow Trance")
 
 	-- Warrior
 	46953, -- Sword and Board
 }
-local debuffs = {
-}
 for k,v in pairs(spells) do
 	local i, _, icon = GetSpellInfo(v)
 	if i then ns.spells[i] = icon
-	else ns.Print("Unknown spell:", v) end
-end
-for k,v in pairs(debuffs) do
-	local i, _, icon = GetSpellInfo(v)
-	if i then
-		ns.spells[i] = icon
-		ns.debuffs[i] = true
 	else ns.Print("Unknown spell:", v) end
 end
