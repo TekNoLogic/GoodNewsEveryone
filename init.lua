@@ -2,11 +2,13 @@
 local myname, ns = ...
 
 
-ns.dbname, ns.dbdefaults = 'GoodNewsEveryoneDB', {
-	point = "CENTER", x = 0, y = 300,
-	showanchor = true,
+ns.dbname, ns.dbdefaults = "GoodNewsEveryoneDB", {
 	font = "GameFontNormalLarge",
 	playsound = true,
+	point = "CENTER",
+	showanchor = true,
+	x = 0,
+	y = 300,
 }
 
 
