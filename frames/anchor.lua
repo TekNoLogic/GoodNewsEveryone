@@ -2,14 +2,6 @@
 local myname, ns = ...
 
 
-local colors = setmetatable({}, {__index = function(t,i)
-	local r,g,b = i > 0.5 and 2 * (1 - i) or 1, i > 0.5 and 1 or 2 * i, 0
-	local color = string.format("|cff%02x%02x%02x", r*255, g*255, b*255)
-	t[i] = color
-	return color
-end})
-
-
 local anchor = CreateFrame("Button", nil, UIParent)
 ns.anchor = anchor
 
@@ -36,3 +28,9 @@ anchor:SetScript("OnDragStop", function(self, button)
 	self:StopMovingOrSizing()
 	ns.db.point, ns.db.x, ns.db.y = "BOTTOMLEFT", self:GetLeft(), self:GetBottom()
 end)
+
+
+function ns.OnLoadAnchor()
+	ns.anchor:SetPoint(ns.db.point, ns.db.x, ns.db.y)
+	if not ns.db.showanchor then ns.anchor:Hide() end
+end

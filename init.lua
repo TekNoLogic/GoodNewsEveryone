@@ -11,9 +11,6 @@ ns.dbname, ns.dbdefaults = 'GoodNewsEveryoneDB', {
 
 
 function ns.OnLoad()
-	ns.anchor:SetPoint(ns.db.point, ns.db.x, ns.db.y)
-	if not ns.db.showanchor then ns.anchor:Hide() end
-
 	-- Do this here because we know it'll happen after all modules have init'd
 	ns.BUFF_IDS = nil
 end
