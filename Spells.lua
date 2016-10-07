@@ -24,9 +24,6 @@ local spells = {
 	48107, -- Heating Up
 	48108, -- Pyroblast!
 
-	-- Monk
-	116768, -- Combo Breaker: Blackout Kick
-
 	-- Rogue
 
 	-- Warlock
@@ -55,10 +52,3 @@ local MAELSTROM_READY = GetLocale() == "zhTW" and "氣漩準備完畢!"
 ns.active_spell_names = setmetatable({
 	[MAELSTROM_READY] = GetSpellInfo(51530),
 }, {__index = function(t,i) return i end})
-
-
-local tigerseyebuff, _, tebufficon = GetSpellInfo(116740)
-ns.exclude = {
-	[tigerseyebuff..tebufficon] = true,
-	['+1 Tigereye Brew'] = true,
-}
