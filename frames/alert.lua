@@ -24,7 +24,7 @@ local function OnShow(self)
 
 	self.scaler:Show()
 
-	if ns.db.playsound then PlaySound("RaidBossEmoteWarning") end
+	if ns.db.playsound then PlaySound(PlaySoundKitID and "RaidBossEmoteWarning" or 12197) end
 end
 
 
